@@ -4,9 +4,9 @@ Portal de noticias criado para atender a um cliente. Primeiro projeto remunerado
 # Descrição da Estrutura de Pastas
 
 Para uma melhor organização do programa, a hierarquia de pastas foi definida da seguinte maneira:
-  * docs/: encontra-se todo documento relacionado a aplicação que não atender a nenhuma outra categoria de pastas.
+  * docs/: todo documento relacionado a aplicação que não atender a nenhuma outra categoria de pastas.
   * layout/: protótipos e projetos relacionados à elaboração do site.
-  * sql/: arquivos do banco de dado, bem como seus backups.
+  * sql/: arquivo .sql do banco de dados, bem como seus backups. A cada mudança do banco de dados, a versão anterior deve ser posta na pasta backups e renomeada para a data do backup.
   * www/: arquivos da aplicação.
     * www/src: recursos da aplicação, como imagens, videos, etc.
     * www/lib: biblioteca de classes da aplicação.

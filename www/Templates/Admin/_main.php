@@ -9,19 +9,24 @@
 </head>
 <body>
     <nav class="main-nav">
+        <?php 
+        if ($v->section("sidebar")): 
+            echo $v->section("sidebar");
+        else:
+        ?>
         <a href="<?=url("admin")?>">Home</a>
         <a href="<?=url("admin/categorias/nova")?>">Nova Categoria</a>
         <a href="<?=url("admin/categorias")?>">Categorias</a>
+        <a href="<?=url("admin/usuarios/novo")?>">Novo Usuario</a>
+        <a href="<?=url("admin/usuarios")?>">Usuarios</a>
+        <a href="<?=url("admin/filiais")?>">Filiais</a>
+        <a href="<?=url("admin/filiais/nova")?>">Nova Filial</a>
+        <a href="<?=url("admin/logout")?>">Sair</a>
+        <?php endif; ?>
     </nav>
 
     <main class="main-content">
-        <?php
-        if(isset($content)):
-            echo $content;
-        else:
-            echo $v->section("content");
-        endif;
-        ?>
+        <?= $v->section("content");?>
     </main>
 
     <footer>

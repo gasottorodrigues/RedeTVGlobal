@@ -3,19 +3,19 @@
 
     use Source\Models\User;
 
-    $user = new User ();
+    $users = new User ();
 
-    $nick = "Gabriel";
-    $email = "gabriel@gmail.com";
+    $nick = "Guilherme";
+    $email = "gui@gmail.com";
     $pass = md5("123");
 
-    $user->add($nick,$email,$pass);
+    $users->add($nick,$email,$pass);
 
-    if($user->fail()){
-        $user->fail()->getMessage();
+    if($users->fail()){
+        $users->fail()->getMessage();
     }
 
     echo"<pre>";
-    var_dump($user);
+    var_dump($users);
     echo"</pre>";
 ?>

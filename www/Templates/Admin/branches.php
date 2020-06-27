@@ -1,21 +1,21 @@
 <?php 
     $v->layout("_main.php"); 
 
-    if($cats):
+    if($branches):
         ?>
         <table>  
             <tr>
-               <th>Categorias</th>
+               <th>Filiais</th>
                <th colspan="2">Ações</th>
             </tr>
 
             <?php
-            foreach($cats as $cat):
+            foreach($branches as $branch):
             ?>
                 <tr>
-                    <td><?=$cat->description; ?></td>
-                    <td><a href="<?=url("admin/categorias/delete/{$cat->cat_id}")?>">&times;</a></td>
-                    <td><a href="<?=url("admin/categorias/alter/{$cat->cat_id}")?>">0</a></td>
+                    <td><?=$branch->name; ?></td>
+                    <td><a href="<?=url("admin/filiais/delete/{$branch->branch_id}")?>">&times;</a></td>
+                    <td><a href="<?=url("admin/filiais/alter/{$branch->branch_id}")?>">0</a></td>
                 </tr>
             <?php
             endforeach;
@@ -25,7 +25,7 @@
     else:
     ?>
         <div>
-            <h1>Sem categorias cadastradas</h1>
+            <h1>Sem filiais cadastradas.</h1>
         </div>
     <?php
         endif;

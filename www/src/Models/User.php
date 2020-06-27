@@ -30,7 +30,6 @@ class User extends DataLayer{
         return NULL;
     }
 
-
     // Atualiza um usuário do banco de dados
     public function alter($id,string $nick,string $email,string $pass): User
     {
@@ -51,14 +50,11 @@ class User extends DataLayer{
            $user->destroy();
         }
     }
-
-    public function getAll(){
-        return $user->find()->fetch(true);
-    }
+    
     // Função de verificação de Login do usuário
-    public function login(string $nick, string $pass): bool
+    public function login(string $email, string $pass): bool
     {
-        $user = $this->find("nickname=:nick AND passwd=:pass","nick={$nick}&pass={$pass}")->limit(1)->fetch(true);
+        $user = $this->find("email=:email AND passwd=:pass","email={$email}&pass={$pass}")->limit(1)->fetch(true);
 
         if($user){
             return true;

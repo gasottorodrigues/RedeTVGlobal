@@ -1,25 +1,30 @@
 <?php
     require_once __DIR__."/vendor/autoload.php";
 
-    use CoffeeCode\Router\Router;
+    // header("Location:".BASE_URL."/php/user");
 
-    $router = new Router(BASE_URL);
+    // use CoffeeCode\Router\Router;
 
-    $router->namespace("Source\App");
+    // $router = new Router(BASE_URL);
 
-    $router->group(null);
-    $router->get("/","Web:home");
-    $router->get("/contato","Web:contact");
+    // $router->namespace("Source\App");
 
-    $router->group("admin");
-    $router->get("/","Admin:home");
+    // $router->group(null);
+    // $router->get("/","Web:home");
+    // $router->get("/contato","Web:contact");
 
-    $router->group("ooops");
-    $router->get("/{error}","Web:error");
+    // $router->group("admin");
+    // $router->get("/","Admin:home");
+    // $router->get("/categorias","Admin:viewCategories");
+    // $router->get("/categorias/nova","Admin:newCategory");
+    // $router->post("/categorias/nova","Admin:saveCategory");
 
-    $router->dispatch();
+    // $router->group("ooops");
+    // $router->get("/{errcode}","Web:error");
 
-    if($router->error()){
-        $router->redirect("/ooops/{$router->error()}");
-    }
+    // $router->dispatch();
+
+    // if($router->error()){
+    //     $router->redirect("/ooops/{$router->error()}");
+    // }
 ?>

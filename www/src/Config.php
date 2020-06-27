@@ -28,10 +28,10 @@ Retorna a string de acesso da rota.
 function url(string $uri): string
 {
     if($uri){
-        return ROOT."/{$uri}";
+        return BASE_URL."/{$uri}";
     }
     
-    return ROOT;
+    return BASE_URL;
 }
 
 ?>

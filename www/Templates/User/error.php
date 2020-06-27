@@ -1,0 +1,2 @@
+<h1>ERROR <?=$errcode?></h1>
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus aliquid quas distinctio inventore reiciendis, provident sunt nesciunt enim at qui debitis quasi architecto accusamus praesentium sapiente, adipisci eum perferendis veniam!</p>

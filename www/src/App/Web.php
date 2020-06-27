@@ -10,24 +10,23 @@ class Web
     private $view;
 
     public function __construct(){
-
-        $this->view = Engine::create(__DIR__."/../../Templates","php");
+        $this->view = Engine::create(__DIR__."/../../Templates/User","php");
     }
 
     public function home($data){
-        $users = (new User())->find()->fetch(true);
-        echo $this->view->render("home.php",[
-            "title"=> "Home | ". SITE,
-            "users"=> $users
+        echo $this->view->render("_main.php",[
+            "title" => "Homepage | ". SITE
+        ]);
+        // header("Location:". BASE_URL . "/admin");
+    }
+
+    public function error($data){
+        echo $this->view->render("error.php",[
+            "title"=> "Erro {$data["errcode"]}| ". SITE,
+            "errcode"=>$data["errcode"]
         ]);
     }
 
-    public function contact($data){
-        echo "<h1>Contato</h1>";
-    }
-    public function error($data){
-        echo"<h1>Erro {$data["error"]}</h1>";
-    }
 }
 
 ?>

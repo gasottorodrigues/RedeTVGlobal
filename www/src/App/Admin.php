@@ -2,9 +2,11 @@
 namespace Source\App;
 
 use League\Plates\Engine;
+
 use Source\Models\Category;
 use Source\Models\Branch;
 use Source\Models\User;
+use Source\Models\News;
 
 class Admin
 {
@@ -13,6 +15,8 @@ class Admin
     public function __construct(){
         $this->view = Engine::create(__DIR__."/../../Templates/Admin","php");
     }
+
+    //Controladores de rotas de login do Administrador
 
     public function login($data){
         echo $this->view->render("login.php",["title"=> "Login | ". SITE]);
@@ -47,12 +51,16 @@ class Admin
     
     }
 
+    //Controlador da Home do Administrador
+
     public function home($data){
         if(!$this->isLogged()){
             header("Location:".url("admin/login"));
         }
         echo $this->view->render("home.php",["title"=> "Admin Home | ". SITE]);
     }
+
+    //Controlador das ações com usuários
 
     public function viewUsers($data){
         $users = (new User())->find()->fetch(1);
@@ -90,7 +98,8 @@ class Admin
         header("Location:".url("admin/usuarios"));
     }
 
-    //CATEGORIES
+    //Controlador de ações com categorias
+
     public function viewCategories($data){
         $categories = (new Category)->find()->fetch(true);
 
@@ -124,7 +133,8 @@ class Admin
          header("Location:". url("/admin/categorias"));
     }
 
-    //FILIAIS
+    //Controlador de ações com Filiais
+
     public function viewBranches($data){
         $branch = (new Branch)->find()->fetch(true);
 
@@ -155,9 +165,39 @@ class Admin
         $branch = new Branch;
         $branch->remove($data['branch_id']);
 
-            header("Location:". url("/admin/filiais"));
+        header("Location:". url("/admin/filiais"));
     }
- 
+
+    //Controladores de ações com notícias
+
+    public function viewNews($data){
+        echo $this->view->render("news.php",[]);
+    }
+
+    public function newNews($data){
+        echo $this->view->render("newnews.php",[]);
+    }
+
+    public function saveNews($data){
+        $news = new News;
+        $news->title = $data["title"];
+        $news->thumb_url = $data["thumb_url"];
+        $news->caption = $data["caption"];
+        $news->content = $data["content"];
+        $news->date = $data["date"];
+        $news->branch = $data["branch"];
+        $news->category = $data["category"];
+        $news->save();
+
+        header("Location:". url("/admin/noticias"));
+    }
+
+    public function removeNews($data){
+        $news = new News;
+        $news->remove($data["news_id"]);
+
+        header("Location:". url("/admin/noticias"));
+    }
 }
 
 ?>

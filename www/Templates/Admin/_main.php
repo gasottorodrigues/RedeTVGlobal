@@ -6,6 +6,7 @@
     <title><?=$title;?></title>
 
     <link rel="stylesheet" href="<?=url("Templates/Admin/styles/interface.css")?>">
+    <link rel="stylesheet" href="<?=url("Templates/Admin/styles/interface.css")?>">
 </head>
 <body>
     <nav class="main-nav">
@@ -21,6 +22,7 @@
         <a href="<?=url("admin/usuarios")?>">Usuarios</a>
         <a href="<?=url("admin/filiais")?>">Filiais</a>
         <a href="<?=url("admin/filiais/nova")?>">Nova Filial</a>
+        <a href="<?=url("admin/noticias/nova")?>">Nova Notícia</a>
         <a href="<?=url("admin/logout")?>">Sair</a>
         <?php endif; ?>
     </nav>
@@ -30,6 +32,8 @@
     </main>
 
     <footer>
+        <?= $v->section("footer");?>
     </footer>
+    <?= $v->section("scripts") ?>
 </body>
 </html>

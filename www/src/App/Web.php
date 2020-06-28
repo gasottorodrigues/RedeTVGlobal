@@ -14,7 +14,7 @@ class Web
     }
 
     public function home($data){
-        echo $this->view->render("_main.php",[
+        echo $this->view->render("home.php",[
             "title" => "Homepage | ". SITE
         ]);
         // header("Location:". BASE_URL . "/admin");

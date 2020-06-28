@@ -1,0 +1,107 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:content-box;
+}
+
+div.main-container{
+    padding:0;
+}
+/* CABECALHO DA PAGINA */
+
+header.main-header{
+    background:#31348f;
+    color:white;
+}
+
+span.logo{
+    font-size:1.5rem;
+}
+
+header.main-header nav a{
+    color:white;
+}
+
+header.main-header nav a:hover{
+    color:black;
+}
+
+a.fa{
+    width:40px;
+    height:40px;
+
+    border-radius:30%;
+    font-size:23px;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    text-decoration: none;
+
+    color: white;
+    background: transparent;
+}
+
+a.fa:hover{
+    color:black;
+}
+/* RODAPE DA PAGINA */
+
+footer.main-footer{
+    background:#111;
+    color:white
+}
+
+header.footer-header{
+    font-weight: bolder;
+    font-size:1.5rem;
+    border-bottom:1px solid white;
+    margin-bottom:10px;
+}
+
+div.footer-list ul li{
+    list-style: none;
+    padding:5px 0px;
+    border-bottom:1px dashed white;
+    margin-bottom:2px;
+}
+
+/* CSS DA HOME */
+
+div.carousel-image{
+    height: 400px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    text-align:right;
+    color:white;
+}
+
+div.carousel-image div.caption{
+    background:rgba(0,0,0,0.5);
+}
+
+div.carousel-image h1{
+    font-size:3rem;
+    padding:8px 0px;
+    border-bottom:1px solid white;
+}
+
+div.carousel-image h2{
+    float:right;
+    width:50%;
+    font-size:1rem;
+    text-align: justify;
+}
+
+div.news{
+    height:1000px;
+}

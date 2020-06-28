@@ -33,6 +33,11 @@
     $router->post("/filiais/nova","Admin:saveBranch");
     $router->get("/filiais/delete/{branch_id}","Admin:removeBranch");
 
+    $router->get("/noticias","Admin:viewNews");
+    $router->get("/noticias/nova","Admin:newNews");
+    $router->post("/noticias/nova","Admin:saveNews");
+    $router->get("/noticias/delete/{news_id}","Admin:removeNews");
+
     $router->group("ooops");
     $router->get("/{errcode}","Web:error");
 

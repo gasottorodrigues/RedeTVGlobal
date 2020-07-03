@@ -1,7 +1,7 @@
 
 
 body {
-    background-color: #828282;
+    background-color: #fff;
 }
 
 h1,
@@ -99,7 +99,7 @@ h5 {
 }
 
 .blog-grid-system .color-orange a {
-    color: #828282 !important;
+    color: #fff !important;
     font-size: 13px;
     padding: 0 0.7rem;
     border-radius: 3px;
@@ -265,6 +265,10 @@ a:focus {
     color: #FF6347 !important;
 }
 
+a.navbar-brand:hover{
+    color: #fff !important;
+}
+
 .btn,
 .page-link:hover,
 .page-link:focus,
@@ -278,7 +282,7 @@ a:focus {
 .navbar-inverse {
     color: #ffffff !important;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    background: #828282 linear-gradient(to right, #828282 0px, #c75654 100%) repeat scroll 0 0 !important
+    background: #828282 linear-gradient(to right, #1E90FF 0px, #6495ED 100%) repeat scroll 0 0 !important
 }
 
 .gp-button.btn-primary:hover,
@@ -322,4 +326,17 @@ a:focus {
         width: 100%;
         display: block;
     }
+}
+
+#carouselExampleInterval .carousel-inner .carousel-item img{
+    height: 400px;
+}
+
+#carouselExampleInterval.carousel.slide{
+    margin: 6rem auto 1rem;
+    width: 75%;
+}
+
+#wrapper{
+   background: #fff;
 }

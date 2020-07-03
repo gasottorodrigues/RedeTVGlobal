@@ -251,6 +251,7 @@ a {
     left: 0;
     right: 0;
     width: 100%;
+    background-color: #D3D3D3 !important;
 }
 
 .dropdown-menu .dropdown-menu {
@@ -260,7 +261,7 @@ a {
 .mega-menu-content {
     position: relative;
     padding: 0;
-    background-color: #828282;
+    background-color: #D3D3D3;
 }
 
 .tab-details {
@@ -384,7 +385,7 @@ div.tab button:hover {
     padding: 4rem 0;
     display: block;
     position: relative;
-    background-color: #828282;
+    background-color: #fff !important;
 }
 
 .section.lb {
@@ -1087,11 +1088,21 @@ div.tab button:hover {
     padding: 1rem 0 0.6rem;
     margin: 0;
     font-size: 28px;
+    background-color: #6495ED !important;
+}
+
+.blog-meta.big-meta h4 a{
+    color: #fff !important;
 }
 
 .blog-meta.big-meta p {
     margin-bottom: 0.5rem;
     padding-bottom: 0;
+    color: black !important;
+}
+
+.blog-meta small.firstsmall .bg-orange{
+    background-color: #6495ED !important;
 }
 
 .blog-meta small {

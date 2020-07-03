@@ -175,11 +175,19 @@ class Admin
     }
 
     public function newNews($data){
-        echo $this->view->render("newnews.php",[]);
+        $cats = (new Category())->find()->fetch(true);
+        $branches = (new Branch())->find()->fetch(true);
+
+        echo $this->view->render("newnews.php",[
+            "title" => "Nova notícia | ". SITE,
+            "cats" => $cats,
+            "branches" => $branches
+        ]);
     }
 
     public function saveNews($data){
         $news = new News;
+        $news->thumb_url = $data["url"];
         $news->title = $data["title"];
         $news->thumb_url = $data["thumb_url"];
         $news->caption = $data["caption"];

@@ -23,6 +23,7 @@
         <a href="<?=url("admin/filiais")?>">Filiais</a>
         <a href="<?=url("admin/filiais/nova")?>">Nova Filial</a>
         <a href="<?=url("admin/noticias/nova")?>">Nova Notícia</a>
+        <a href="<?=url("admin/noticias")?>">Notícias</a>
         <a href="<?=url("admin/logout")?>">Sair</a>
         <?php endif; ?>
     </nav>

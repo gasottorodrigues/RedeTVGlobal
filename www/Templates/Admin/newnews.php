@@ -25,13 +25,40 @@
             <input type="date" name="date">
         </div>
         <div class="form-group">
-            <input type="text" name="branch" placeholder="Filial">
-        </div>
-         <div class="form-group">
-            <input type="text" name="category" placeholder="Categoria">
+            <select name="categorias" id="categorias">
+        <?php
+            if($cats):
+                foreach($cats as $cat):
+        ?>
+                <option value="<?=$cat->cat_id;?>"><?=$cat->description;?></option>
+        <?php
+                endforeach;
+            else:
+        ?>
+            <option value="0">Sem opções</option>
+            
+        <?php endif; ?>
+            </select>
         </div>
         <div class="form-group">
-            <button type="submit">Cadastrar</button>
+            <select name="filiais" id="filiais">
+        <?php
+            if($branches):
+                foreach($branches as $branch):
+        ?>
+                <option value="<?=$branch->branch_id;?>"><?=$branch->name;?></option>
+        <?php
+                endforeach;
+            else:
+        ?>
+
+            <option value="0">Sem opções</option>
+
+        <?php endif; ?>
+            </select>
+        </div>
+
+        <button type="submit">Cadastrar</button>
         </div>
     </form>
 </div>

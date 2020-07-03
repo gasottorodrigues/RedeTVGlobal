@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!-- Site Metas -->
-    <title>Nome do Site</title>
+    <title>GLOBAL TV</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -46,7 +46,7 @@
                             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
-                            <a class="navbar-brand" href="index.php"><img src="images/version/logo.png" alt=""></a>
+                            <a class="navbar-brand" href="index.php"><img src="images/version/tp.png" alt="">GLOBAL TV</a>
                             <div class="collapse navbar-collapse" id="navbarCollapse">
                                 <ul class="navbar-nav mr-auto">
                                     <li class="nav-item">
@@ -59,11 +59,11 @@
                                                 <div class="container">
                                                     <div class="mega-menu-content clearfix">
                                                         <div class="tab">
-                                                            <button class="tablinks active" onclick="openCategory(event, 'cat01')">Ciência</button>
-                                                            <button class="tablinks" onclick="openCategory(event, 'cat02')">Técnologia</button>
-                                                            <button class="tablinks" onclick="openCategory(event, 'cat03')">Media Social</button>
-                                                            <button class="tablinks" onclick="openCategory(event, 'cat04')">Automóveis</button>
-                                                            <button class="tablinks" onclick="openCategory(event, 'cat05')">No Mundo Todo</button>
+                                                            <button class="tablinks active" onclick="openCategory(event, 'cat01')">Américo Brasiliense - SP</button>
+                                                            <button class="tablinks" onclick="openCategory(event, 'cat02')">Ribeirão Bonito - SP</button>
+                                                            <button class="tablinks" onclick="openCategory(event, 'cat03')">Araraquara - SP</button>
+                                                            <button class="tablinks" onclick="openCategory(event, 'cat04')">Brotas - SP</button>
+                                                            <button class="tablinks" onclick="openCategory(event, 'cat05')">Cacondes</button>
                                                         </div>
 
                                                         <div class="tab-details clearfix">

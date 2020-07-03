@@ -1,5 +1,6 @@
         <?php include 'header.php'; ?>
 
+        <?php /* ?>
         <section class="section first-section">
             <div class="container-fluid">
                 <div class="masonry-blog clearfix">
@@ -53,6 +54,67 @@
                 </div><!-- end masonry -->
             </div>
         </section>
+
+        <php */ ?>
+
+
+            <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel" >
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-interval="10000" >
+                  <img src="images/version/capa.png" class="d-block w-100" alt="...">
+                  
+                </div>
+                <div class="carousel-item" data-interval="2000">
+                  <img src="upload/news_01.jpg" class="d-block w-100" alt="...">
+                        <div class="shadoweffect">
+                            <div class="shadow-desc">
+                                <div class="blog-meta">
+                                    <span class="bg-orange"><a href="tech-category-01.html" title="">Técnologia</a></span>
+                                    <h4><a href="news.php" title="">Anonymous: por que os cyber-ativistas estão outra vez sob os holofotes</a></h4>
+                                    <small><a href="news.php" title="">01 Julho, 2020</a></small>
+                                    <small><a href="tech-author.html" title="">Por Amanda</a></small>
+                                </div><!-- end meta -->
+                            </div><!-- end shadow-desc -->
+                        </div><!-- end shadow -->
+                </div>
+                <div class="carousel-item" data-interval="2000">
+                  <img src="upload/news_02.jpg" class="d-block w-100" alt="...">
+                        <div class="shadoweffect">
+                            <div class="shadow-desc">
+                            <div class="blog-meta">
+                                <span class="bg-orange"><a href="tech-category-01.html" title="">Gadgets</a></span>
+                                <h4><a href="news.php" title="">Os 10 principais aplicativos de telefone e prêmios de design para celular de 2020</a></h4>
+                                <small><a href="news.php" title="">03 Julho, 2020</a></small>
+                                <small><a href="tech-author.html" title="">Por Jessica</a></small>
+                            </div><!-- end meta -->
+                        </div><!-- end shadow-desc -->
+                        </div><!-- end shadow -->
+                </div>
+                <div class="carousel-item">
+                  <img src="upload/news_03.jpg" class="d-block w-100" alt="...">
+                        <div class="shadoweffect">
+                        <div class="shadow-desc">
+                            <div class="blog-meta">
+                                <span class="bg-orange"><a href="tech-category-01.html" title="">Técnologia</a></span>
+                                <h4><a href="news.php" title="">Pesquisador recebe US$ 100 mil da Apple por descobrir falha que permitia invadir contas autorizadas com Apple ID</a></h4>
+                                <small><a href="news.php" title="">01 Julho, 2020</a></small>
+                                <small><a href="tech-author.html" title="">Por Alvez</a></small>
+                            </div><!-- end meta -->
+                        </div><!-- end shadow-desc -->
+                        </div><!-- end shadow -->
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+             </div>
+            </div>
+
 
         <section class="section">
             <div class="container">

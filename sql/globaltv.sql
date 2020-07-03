@@ -1,25 +1,26 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
--- https://www.phpmyadmin.net/
+-- version 4.0.4.2
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Tempo de geração: 27-Jun-2020 às 05:08
--- Versão do servidor: 10.4.13-MariaDB
--- versão do PHP: 7.4.7
+-- Máquina: localhost
+-- Data de Criação: 03-Jul-2020 às 17:47
+-- Versão do servidor: 5.6.13
+-- versão do PHP: 5.4.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Banco de dados: `globaltv`
+-- Base de Dados: `globaltv`
 --
+CREATE DATABASE IF NOT EXISTS `globaltv` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `globaltv`;
 
 -- --------------------------------------------------------
 
@@ -27,12 +28,14 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `branches`
 --
 
-CREATE TABLE `branches` (
-  `branch_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `branches` (
+  `branch_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`branch_id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -40,12 +43,14 @@ CREATE TABLE `branches` (
 -- Estrutura da tabela `categories`
 --
 
-CREATE TABLE `categories` (
-  `cat_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `categories` (
+  `cat_id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(128) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`cat_id`),
+  UNIQUE KEY `description` (`description`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=11 ;
 
 --
 -- Extraindo dados da tabela `categories`
@@ -65,8 +70,8 @@ INSERT INTO `categories` (`cat_id`, `description`, `created_at`, `updated_at`) V
 -- Estrutura da tabela `news`
 --
 
-CREATE TABLE `news` (
-  `news_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `news` (
+  `news_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` text NOT NULL,
   `caption` text NOT NULL,
   `content` mediumtext NOT NULL,
@@ -74,9 +79,12 @@ CREATE TABLE `news` (
   `date` date NOT NULL,
   `branch` int(11) NOT NULL,
   `category` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`news_id`),
+  KEY `branch` (`branch`),
+  KEY `category` (`category`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -84,14 +92,15 @@ CREATE TABLE `news` (
 -- Estrutura da tabela `users`
 --
 
-CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `nickname` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
   `passwd` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=35 ;
 
 --
 -- Extraindo dados da tabela `users`
@@ -99,67 +108,6 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `nickname`, `email`, `passwd`, `created_at`, `updated_at`) VALUES
 (34, 'Gabriel', 'gabriel@gmail.com', '202cb962ac59075b964b07152d234b70', '2020-06-27 08:03:00', '2020-06-27 08:03:00');
-
---
--- Índices para tabelas despejadas
---
-
---
--- Índices para tabela `branches`
---
-ALTER TABLE `branches`
-  ADD PRIMARY KEY (`branch_id`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Índices para tabela `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`cat_id`),
-  ADD UNIQUE KEY `description` (`description`);
-
---
--- Índices para tabela `news`
---
-ALTER TABLE `news`
-  ADD PRIMARY KEY (`news_id`),
-  ADD KEY `branch` (`branch`),
-  ADD KEY `category` (`category`);
-
---
--- Índices para tabela `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT de tabelas despejadas
---
-
---
--- AUTO_INCREMENT de tabela `branches`
---
-ALTER TABLE `branches`
-  MODIFY `branch_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `categories`
---
-ALTER TABLE `categories`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT de tabela `news`
---
-ALTER TABLE `news`
-  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

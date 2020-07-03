@@ -1,24 +1,24 @@
 [
     {
         "name": "coffeecode/datalayer",
-        "version": "1.1.4",
-        "version_normalized": "1.1.4.0",
+        "version": "1.1.7",
+        "version_normalized": "1.1.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/robsonvleite/datalayer.git",
-            "reference": "17fecff8edb8fb5287648875f182acbb80389614"
+            "reference": "6a51fa227bba003be11519e7efa8338bc87460f5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/robsonvleite/datalayer/zipball/17fecff8edb8fb5287648875f182acbb80389614",
-            "reference": "17fecff8edb8fb5287648875f182acbb80389614",
+            "url": "https://api.github.com/repos/robsonvleite/datalayer/zipball/6a51fa227bba003be11519e7efa8338bc87460f5",
+            "reference": "6a51fa227bba003be11519e7efa8338bc87460f5",
             "shasum": ""
         },
         "require": {
             "ext-pdo": "*",
             "php": "^7.2"
         },
-        "time": "2019-10-29T13:34:17+00:00",
+        "time": "2020-07-02T17:10:50+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -95,6 +95,62 @@
             "router",
             "routes",
             "upinside"
+        ]
+    },
+    {
+        "name": "coffeecode/uploader",
+        "version": "1.0.10",
+        "version_normalized": "1.0.10.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/robsonvleite/uploader.git",
+            "reference": "1fd58f13d41de26be36bef9fcebe54b865f3380e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/robsonvleite/uploader/zipball/1fd58f13d41de26be36bef9fcebe54b865f3380e",
+            "reference": "1fd58f13d41de26be36bef9fcebe54b865f3380e",
+            "shasum": ""
+        },
+        "require": {
+            "ext-exif": "*",
+            "ext-gd": "*",
+            "ext-mbstring": "*",
+            "php": "^7.2"
+        },
+        "time": "2020-06-23T13:22:03+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "CoffeeCode\\Uploader\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Robson V. Leite",
+                "email": "cursos@upinside.com.br",
+                "role": "Developer"
+            },
+            {
+                "name": "Tiago Chini",
+                "email": "tiago.chini@hotmail.com",
+                "role": "collaborator"
+            }
+        ],
+        "description": "It is a easy PHP upload manager for images, files and media in your application",
+        "homepage": "http://www.upinside.com.br",
+        "keywords": [
+            "Coffeecode",
+            "Image upload",
+            "file upload",
+            "media upload",
+            "upinside",
+            "upload"
         ]
     },
     {

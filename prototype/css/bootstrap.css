@@ -427,6 +427,8 @@ figure {
 
 img {
   vertical-align: middle;
+  height: 55px;
+  margin-right: 5px;
 }
 
 [role="button"] {
@@ -3927,6 +3929,7 @@ tbody.collapse.show {
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 .navbar-brand:focus, .navbar-brand:hover {

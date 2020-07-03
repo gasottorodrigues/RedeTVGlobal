@@ -1,7 +1,6 @@
 <?php
 
-define("BASE_URL","http://25.131.50.88/RedeTVGlobal/www");
-
+define("BASE_URL","http://25.87.10.27/RedeTVGlobal/www");
 define("SITE","GlobalTV");
 
 define("DATA_LAYER_CONFIG", [

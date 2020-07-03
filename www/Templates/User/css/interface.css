@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:wght@500&display=swap');
+
 *{
     margin:0;
     padding:0;
     box-sizing:content-box;
+    font-family: 'Archivo Narrow', sans-serif;
 }
 
 div.main-container{
@@ -10,15 +13,17 @@ div.main-container{
 /* CABECALHO DA PAGINA */
 
 header.main-header{
-    background:#31348f;
+    background:#2d5987;
     color:white;
 }
 
-span.logo{
-    font-size:1.5rem;
+.main-header img{
+    height:64px;
 }
 
 header.main-header nav a{
+    font-size:1rem;
+    text-transform: uppercase;
     color:white;
 }
 
@@ -26,7 +31,7 @@ header.main-header nav a:hover{
     color:black;
 }
 
-a.fa{
+header.main-header a.fa{
     width:40px;
     height:40px;
 
@@ -44,7 +49,7 @@ a.fa{
     background: transparent;
 }
 
-a.fa:hover{
+header.main-header a.fa:hover{
     color:black;
 }
 /* RODAPE DA PAGINA */
@@ -102,6 +107,6 @@ div.carousel-image h2{
     text-align: justify;
 }
 
-div.news{
-    height:1000px;
+div.recent-news header.news-header i.fa{
+    color:#2d5987;
 }

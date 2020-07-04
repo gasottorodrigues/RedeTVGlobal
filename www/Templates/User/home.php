@@ -15,53 +15,27 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="w-100 carousel-image" style="background-image:url(<?=url("Templates/User/src/thumb-1.jpg")?>)" alt="First slide">
-                <div class="caption p-4">
-                    <h1>TÍTULO DA NOTÍCIA</h1>
-                    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officia ut amet pariatur voluptates commodi reprehenderit, accusamus hic rerum consequuntur aliquam ducimus doloribus? Ratione dolores iusto fuga possimus rerum accusamus?</h2>
+            <div class="carousel-item active">
+                <div class="w-100 carousel-image" style="background-image:url(<?=url("Templates/User/img/capa.png")?>)" alt="First slide">
                 </div>
             </div>
-        </div>
-
-        <div class="carousel-item">
-            <div class="w-100 carousel-image" style="background-image:url(<?=url("Templates/User/src/thumb-2.jpg")?>)" alt="First slide">
-                <div class="caption p-4">
-                    <h1>TÍTULO DA NOTÍCIA</h1>
-                    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officia ut amet pariatur voluptates commodi reprehenderit, accusamus hic rerum consequuntur aliquam ducimus doloribus? Ratione dolores iusto fuga possimus rerum accusamus?</h2>
+        <?php 
+            foreach($news as $n):
+        ?>
+            <div class="carousel-item">
+                <div class="w-100 carousel-image" style="background-image:url(<?=url($n->thumb_url)?>)" alt="First slide">
+                    <div class="caption p-4">
+                        <h1><?=$n->title?></h1>
+                        <h2><?=$n->caption?></h2>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="carousel-item">
-            <div class="w-100 carousel-image" style="background-image:url(<?=url("Templates/User/src/thumb-3.jpg")?>)" alt="First slide">
-                <div class="caption p-4">
-                    <h1>TÍTULO DA NOTÍCIA</h1>
-                    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officia ut amet pariatur voluptates commodi reprehenderit, accusamus hic rerum consequuntur aliquam ducimus doloribus? Ratione dolores iusto fuga possimus rerum accusamus?</h2>
-                </div>
-            </div>
-        </div>
-
-        <div class="carousel-item">
-            <div class="w-100 carousel-image" style="background-image:url(<?=url("Templates/User/src/thumb-4.jpg")?>)" alt="First slide">
-                <div class="caption p-4">
-                    <h1>TÍTULO DA NOTÍCIA</h1>
-                    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officia ut amet pariatur voluptates commodi reprehenderit, accusamus hic rerum consequuntur aliquam ducimus doloribus? Ratione dolores iusto fuga possimus rerum accusamus?</h2>
-                </div>
-            </div>
-        </div>
-
-        <div class="carousel-item">
-            <div class="w-100 carousel-image" style="background-image:url(<?=url("Templates/User/src/thumb-5.jpg")?>)" alt="First slide">
-                <div class="caption p-4">
-                    <h1>TÍTULO DA NOTÍCIA</h1>
-                    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officia ut amet pariatur voluptates commodi reprehenderit, accusamus hic rerum consequuntur aliquam ducimus doloribus? Ratione dolores iusto fuga possimus rerum accusamus?</h2>
-                </div>
-            </div>
-        </div>
-
+        <?php 
+            endforeach;
+        ?>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -73,8 +47,19 @@
     </a>
 </div>
 
-<div class="recent-news p-3 w-100">
+<div class="container recent-news p-5 w-100">
     <header class="news-header">
         <h1>Notícias Recentes <i class="fa fa-newspaper-o" aria-hidden="true"></i></h1>
     </header>
+    
+    <?php foreach($news as $n): ?>
+        <div class="news w-75">
+            <div class="news-square-thumb" style="background-image:url(<?=url($n->thumb_url)?>)"></div>
+            <div class="news-desc">
+                <h1><a href="<?=url("noticia/{$n->news_id}")?>"><?=$n->title?></a></h1>
+                <h2><?=$n->caption?></h2>
+            </div>
+        </div>
+    <?php endforeach; ?>
+
 </div>

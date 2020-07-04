@@ -1,6 +1,7 @@
 <?php
 namespace Source\App;
 
+use CoffeeCode\Uploader\Uploader;
 use League\Plates\Engine;
 
 use Source\Models\Category;
@@ -63,6 +64,9 @@ class Admin
     //Controlador das ações com usuários
 
     public function viewUsers($data){
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
         $users = (new User())->find()->fetch(1);
         echo $this->view->render("users.php",[
             "title"=> "Usuários | ". SITE,
@@ -71,6 +75,9 @@ class Admin
     }
 
     public function newUser($data){
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
         echo $this->view->render("newuser.php",["title"=> "Novo usuário | ". SITE]);
     }
 
@@ -92,6 +99,11 @@ class Admin
     }
 
     public function removeUser($data){
+
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
         $user = new User;
         $user->remove($data["user_id"]);
 
@@ -101,6 +113,11 @@ class Admin
     //Controlador de ações com categorias
 
     public function viewCategories($data){
+
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
         $categories = (new Category)->find()->fetch(true);
 
         echo $this->view->render("categories.php",[
@@ -110,6 +127,10 @@ class Admin
     }
 
     public function newCategory($data){
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
         echo $this->view->render("newcategory.php",[]);
     }
 
@@ -127,6 +148,11 @@ class Admin
     }
 
     public function removeCategory($data){
+
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
         $cat = new Category;
         $cat->remove($data['cat_id']);
 
@@ -136,6 +162,11 @@ class Admin
     //Controlador de ações com Filiais
 
     public function viewBranches($data){
+
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
         $branch = (new Branch)->find()->fetch(true);
 
         echo $this->view->render("branches.php",[
@@ -145,6 +176,10 @@ class Admin
     }
 
     public function newBranch($data){
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
        echo $this->view->render("newbranch.php",[]);
     }
 
@@ -162,6 +197,11 @@ class Admin
     }
 
     public function removeBranch($data){
+
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
         $branch = new Branch;
         $branch->remove($data['branch_id']);
 
@@ -171,12 +211,26 @@ class Admin
     //Controladores de ações com notícias
 
     public function viewNews($data){
-        echo $this->view->render("news.php",[]);
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+        $new = (new News)->find()->fetch(true);
+
+        echo $this->view->render("news.php",[
+            "title"=> "Notícias | ". SITE,
+            "news" => $new
+        ]);
     }
 
     public function newNews($data){
-        $cats = (new Category())->find()->fetch(true);
-        $branches = (new Branch())->find()->fetch(true);
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+        $cats = (new Category)->find()->fetch(true);
+        $branches = (new Branch)->find()->fetch(true);
+
 
         echo $this->view->render("newnews.php",[
             "title" => "Nova notícia | ". SITE,
@@ -186,26 +240,39 @@ class Admin
     }
 
     public function saveNews($data){
-        $news = new News;
-        $news->thumb_url = $data["url"];
-        $news->title = $data["title"];
-        $news->thumb_url = $data["thumb_url"];
-        $news->caption = $data["caption"];
-        $news->content = $data["content"];
-        $news->date = $data["date"];
-        $news->branch = $data["branch"];
-        $news->category = $data["category"];
-        $news->save();
+        
+        $upload = new \CoffeeCode\Uploader\Image("uploads","images");
+        $files = $_FILES;
 
-        header("Location:". url("/admin/noticias"));
+        if(!empty($files["thumb"])){
+            $file = $files["thumb"];
+    
+            if(empty($file["type"]) || !in_array($file["type"],$upload::isAllowed())){
+                echo "Imagem invalida"; 
+                die();
+            }else{
+                $url = $upload->upload($file,pathinfo($file["name"], PATHINFO_FILENAME),1920);
+            }
+        }
+
+        $news = new News;
+        $news->add($data["title"], $data["caption"], $data["content"],$url, $data["category"], $data["branch"],$data["date"]);
+
+        if($news->fail()){
+            $news->fail()->getMessage();
+        }
+        header("Location:". url("admin/noticias/nova"));
     }
 
     public function removeNews($data){
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+      
         $news = new News;
         $news->remove($data["news_id"]);
 
         header("Location:". url("/admin/noticias"));
     }
 }
-
 ?>

@@ -3,7 +3,7 @@
 *{
     margin:0;
     padding:0;
-    box-sizing:content-box;
+    box-sizing:border-box;
     font-family: 'Archivo Narrow', sans-serif;
 }
 
@@ -15,6 +15,7 @@ div.main-container{
 header.main-header{
     background:#2d5987;
     color:white;
+    margin:0 0 !important;
 }
 
 .main-header img{
@@ -31,27 +32,60 @@ header.main-header nav a:hover{
     color:black;
 }
 
+header.main-header .navbar .navbar-brand img{
+    height:50px !important;
+}
+
+header.main-header .navbar .navbar-toggler .navbar-toggler-icon i{
+    color:white;
+    font-size:2rem;
+}
+
+.menu-large {
+    overflow: hidden;
+    position: static !important;
+    top:0;
+}
+
+
+header.main-header div.dropdown-menu{
+    border-radius: 0;
+    padding:0;
+    background:white;
+    
+}
+
+header.main-header div.dropdown-menu ul{
+    list-style-type:none;
+}
+
+header.main-header div.dropdown-menu ul li{
+    text-align:center;
+    width:100%;
+
+    transition:background-color 0.1s;
+}
+
+header.main-header div.dropdown-menu ul li a{
+    color:#2d5987;
+
+    transition:color 0.1s;
+}
+
+header.main-header div.dropdown-menu ul li a:hover{
+    color:white;
+}
+
+header.main-header div.dropdown-menu ul li:hover{
+    background-color: #2d5987;
+}
+
 header.main-header a.fa{
-    width:40px;
-    height:40px;
-
-    border-radius:30%;
-    font-size:23px;
-
-    display:flex;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-    text-decoration: none;
-
-    color: white;
-    background: transparent;
+    font-size:1.3rem;
+    margin:0 2px;
 }
 
-header.main-header a.fa:hover{
-    color:black;
-}
+
 /* RODAPE DA PAGINA */
 
 footer.main-footer{
@@ -107,6 +141,95 @@ div.carousel-image h2{
     text-align: justify;
 }
 
+/* CONTEUDO HOME */
+
+div.recent-news header.news-header h1{
+    font-size:1.5rem;
+}
+
 div.recent-news header.news-header i.fa{
     color:#2d5987;
+}
+
+div.recent-news div.news{
+    position: relative;
+    margin:40px 0px;
+}
+
+div.recent-news div.news div.news-desc{
+    position: absolute;
+    top:0;
+    margin-left:200px;
+}
+
+div.recent-news div.news div.news-desc a{
+    color:#333;
+    display:block;
+    background-color:#0fcadc;
+    margin-top:10px;
+    padding:10px;
+    font-size:1.5rem;
+    border:1px solid white;
+
+    transition:background 0.15s, color 0.15s;
+}
+
+div.recent-news div.news div.news-desc a:hover{
+    background-color:#2d5987;
+    color:white;
+    text-decoration: none;
+}
+
+div.recent-news div.news div.news-desc h2{
+    display:block;
+    margin-top:10px;
+    margin-left:60px;
+    padding:10px;
+    font-size:1.3rem;
+    color:#999;
+    font-weight: lighter;
+    text-align:justify;
+}
+div.recent-news div.news div.news-square-thumb{
+    width:256px;
+    height:256px;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    box-shadow:-8px 8px 0px #0fcadc, 8px -8px 0px #2d5987;
+}
+
+/* CONFIGURAÇÃO DE NOTICIAS */
+header.news-header h1{
+    font-size:5rem;
+    margin-bottom:10px;
+    border-bottom:1px solid #666;
+}
+
+header.news-header h2{
+    margin:0;
+    font-size:1.5rem;
+    color:#666;
+}
+
+
+header.news-header p{
+    margin:10px 0px 30px 0px;
+    display:block;
+    text-align:right;
+}
+header.news-header span{
+    background-color:#0fcadc;
+    border-radius:5px;
+    padding:3px 5px;
+    margin:0px 5px;
+}
+
+div.news-content{
+    padding:30px 0;
+    font-size:1.8rem;
+    text-align:justify;
+    color:#666;
+    border-bottom:1px solid #666;
 }

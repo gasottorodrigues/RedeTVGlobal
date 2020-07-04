@@ -9,7 +9,8 @@
 
     $router->group(null);
     $router->get("/","Web:home");
-    $router->get("/contato","Web:contact");
+    $router->get("/noticia/{news_id}","Web:newsDetails");
+
 
     $router->group("admin");
     $router->get("/","Admin:home");

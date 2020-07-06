@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:wght@500&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Archivo Narrow', sans-serif;
+}
+
+div.main-container{
+    padding:0;
+}
+/* CABECALHO DA PAGINA */
+
+header.main-header{
+    background:#2d5987;
+    color:white;
+    margin:0 0 !important;
+}
+
+.main-header img{
+    height:64px;
+}
+
+header.main-header nav a{
+    font-size:1rem;
+    text-transform: uppercase;
+    color:white;
+}
+
+header.main-header nav a:hover{
+    color:black;
+}
+
+header.main-header .navbar .navbar-brand img{
+    height:50px !important;
+}
+
+header.main-header .navbar .navbar-toggler .navbar-toggler-icon i{
+    color:white;
+    font-size:2rem;
+}
+
+.menu-large {
+    overflow: hidden;
+    position: static !important;
+    top:0;
+}
+
+
+header.main-header div.dropdown-menu{
+    border-radius: 0;
+    padding:0;
+    background:white;
+    
+}
+
+header.main-header div.dropdown-menu ul{
+    list-style-type:none;
+}
+
+header.main-header div.dropdown-menu ul li{
+    text-align:center;
+    width:100%;
+
+    transition:background-color 0.1s;
+}
+
+header.main-header div.dropdown-menu ul li a{
+    color:#2d5987;
+
+    transition:color 0.1s;
+}
+
+header.main-header div.dropdown-menu ul li a:hover{
+    color:white;
+}
+
+header.main-header div.dropdown-menu ul li:hover{
+    background-color: #2d5987;
+}
+
+header.main-header a.fa{
+    font-size:1.3rem;
+    margin:0 2px;
+}
+
+/*HOME DO ADMIN*/
+
+/*FORMULÁRIOS DE NOTÍCIAS*/
+
+.news-form {
+    box-shadow:0px 0px 15px rgba(0,0,0,0.1);
+    width:95%;
+    margin:20px auto;
+    border-radius:30px;
+}
+.news-form h1{
+    font-size:3rem;
+    margin-bottom:40px;
+    color:#DB640F;
+    text-transform: uppercase;
+}
+
+.news-form form input, form select{
+    cursor:pointer;
+}
+
+.news-form form input[type="text"]{
+    border:none;
+    margin-bottom:8px;
+    box-shadow:0px 1px 0px #6663;
+    padding:5px;
+    text-align:center;
+    outline:none;
+
+    transition:all 0.2s;
+}
+.news-form form input[type="text"]::placeholder{
+    color:#2d598799;
+    transition:opacity 0.2s;
+}
+
+.news-form form input[type="text"]:focus{
+    box-shadow:0px 2px 0px #DB640F99;
+}
+
+.news-form form input[type="text"]:focus::placeholder{
+    opacity:0;
+}
+
+.news-form form input.title{
+    font-size:3rem;
+}
+
+.news-form form input.caption{
+    font-size:2rem;
+    margin-bottom:30px;
+}
+
+.news-form form .file-label{
+    background:#DB640F;
+    color:white;
+    cursor:pointer;
+    transition:all 0.2s;
+}
+
+.news-form form .file-label:hover{
+    background:#23a645;
+}
+
+.news-form form .submit{
+    border:none;
+    padding:10px;
+    background:#2fde5d;
+    border-radius:10px;
+    color:#333;
+    font-size:2rem;
+    cursor:pointer;
+    transition:all 0.2s;
+}

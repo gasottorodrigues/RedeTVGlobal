@@ -4,7 +4,6 @@ namespace Source\Models;
 
 use CoffeeCode\DataLayer\DataLayer;
 
-
 class News extends DataLayer{
 
     public function __construct()
@@ -12,7 +11,12 @@ class News extends DataLayer{
         // parametros  na ordem: Tabela, campos obrigatórios, chave primária, timestamp(nao obrigatório);
         parent::__construct("news",["title","caption","content","thumb_url","category","branch", "date"],"news_id");
     }
-
+    public function categoryName(){
+        return (new Category)->findById($this->category)->description;
+    }
+    public function branchName(){
+        return (new Branch)->findById($this->branch)->name;
+    }
     public function add(string $title, string $caption, string $content, string $thumb_url, $category, $branch,$date): News
     {
         $this->title = $title;
@@ -28,21 +32,20 @@ class News extends DataLayer{
     }
 
     //Atualiza uma noticia do banco de dados
-    public function alter($news_id, string $title, string $caption, string $content, string $thumb_url, $category, $branch, $date): News
+    public function alter($news_id, string $title, string $caption, string $content,$thumb_url, $category, $branch, $date): News
     {
         $news = $this->findById($news_id);
         $news->title = $title;
         $news->caption = $caption;
         $news->content = $content;
-        $news->thumb_url = $thumb_url;
         $news->category = $category;
         $news->branch = $branch;
         $news->date = $date;
+        if(!empty($thumb_url)){
+            $news->thumb_url = $thumb_url;
+        }
         $news->save();
-
-        echo "<pre>";
-        var_dump($news);
-        echo "</pre>";
+        
         return $news;
     }
 

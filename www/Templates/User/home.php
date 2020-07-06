@@ -19,10 +19,11 @@
     </ol>
     <div class="carousel-inner">
             <div class="carousel-item active">
-                <div class="w-100 carousel-image" style="background-image:url(<?=url("Templates/User/img/capa.png")?>)" alt="First slide">
+                <div class="w-100 carousel-image" style="background-image:url(<?=url("shared/capa.png")?>)" alt="First slide">
                 </div>
             </div>
-        <?php 
+        <?php
+        if(isset($news)):
             foreach($news as $n):
         ?>
             <div class="carousel-item">
@@ -35,6 +36,7 @@
             </div>
         <?php 
             endforeach;
+        endif;
         ?>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -52,14 +54,20 @@
         <h1>Notícias Recentes <i class="fa fa-newspaper-o" aria-hidden="true"></i></h1>
     </header>
     
-    <?php foreach($news as $n): ?>
+    <?php
+        if(isset($news)):
+        foreach($news as $n): 
+    ?>
         <div class="news w-75">
             <div class="news-square-thumb" style="background-image:url(<?=url($n->thumb_url)?>)"></div>
             <div class="news-desc">
-                <h1><a href="<?=url("noticia/{$n->news_id}")?>"><?=$n->title?></a></h1>
+                <h1><a href="<?=url("regiao/{$n->branch}/categoria/{$n->category}/noticia/{$n->news_id}")?>"><?=$n->title?></a></h1>
                 <h2><?=$n->caption?></h2>
             </div>
         </div>
-    <?php endforeach; ?>
+    <?php 
+        endforeach;
+    endif;
+    ?>
 
 </div>

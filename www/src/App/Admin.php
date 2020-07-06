@@ -58,7 +58,9 @@ class Admin
         if(!$this->isLogged()){
             header("Location:".url("admin/login"));
         }
-        echo $this->view->render("home.php",["title"=> "Admin Home | ". SITE]);
+        echo $this->view->render("home.php",[
+            "title"=> "Admin Home | ". SITE,
+        ]);
     }
 
     //Controlador das ações com usuários
@@ -118,7 +120,7 @@ class Admin
             header("Location:".url("admin/login"));
         }
 
-        $categories = (new Category)->find()->fetch(true);
+        $categories = (new Category)->getAll();
 
         echo $this->view->render("categories.php",[
             "title"=> "Categorias | ". SITE,
@@ -156,7 +158,7 @@ class Admin
         $cat = new Category;
         $cat->remove($data['cat_id']);
 
-         header("Location:". url("/admin/categorias"));
+        header("Location:". url("/admin/categorias"));
     }
 
     //Controlador de ações com Filiais
@@ -193,7 +195,7 @@ class Admin
             die();
         }
 
-        header("Location:". url("/admin/filiais"));
+        header("Location:". url("admin/filiais"));
     }
 
     public function removeBranch($data){
@@ -215,15 +217,40 @@ class Admin
             header("Location:".url("admin/login"));
         }
 
-        $new = (new News)->find()->fetch(true);
+        $news = (new News)->find()->fetch(true);
+
+        foreach($news as $new){
+            $new->category = $new->categoryName();
+            $new->branch = $new->branchName();
+        }
 
         echo $this->view->render("news.php",[
             "title"=> "Notícias | ". SITE,
-            "news" => $new
+            "news" => $news
         ]);
     }
 
-    public function newNews($data){
+    public function alterNews($data)
+    {
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+        $news = (new News)->findById($data["news_id"]);
+
+        $cats = (new Category)->find()->fetch(true);
+        $branches = (new Branch)->find()->fetch(true);
+
+        echo $this->view->render("alternews.php",[
+            "title"=> "Alterar Notícia | ". SITE,
+            "cats" => $cats,
+            "branches" => $branches,
+            "news" => $news
+        ]);
+	}
+
+    public function newNews($data)
+    {
         if(!$this->isLogged()){
             header("Location:".url("admin/login"));
         }
@@ -240,28 +267,47 @@ class Admin
     }
 
     public function saveNews($data){
-        
         $upload = new \CoffeeCode\Uploader\Image("uploads","images");
         $files = $_FILES;
 
-        if(!empty($files["thumb"])){
-            $file = $files["thumb"];
-    
-            if(empty($file["type"]) || !in_array($file["type"],$upload::isAllowed())){
-                echo "Imagem invalida"; 
-                die();
+        if(!isset($data["news_id"])){
+            if(!empty($files["thumb"])){
+                $file = $files["thumb"];
+        
+                if(empty($file["type"]) || !in_array($file["type"],$upload::isAllowed())){
+                    echo "Sem imagem ou imagem inválida para a thumb"; 
+                    die();
+                }else{
+                    $url = $upload->upload($file,pathinfo($file["name"], PATHINFO_FILENAME),1920);
+                }
+            }
+
+            $news = new News;
+            $news->add($data["title"], $data["caption"], preg_replace('/&nbsp;/','  ',$data["content"]),$url, $data["category"], $data["branch"],$data["date"]);
+
+            if($news->fail()){
+                $news->fail()->getMessage();
+            }
+        }else{
+            if(!empty($files["thumb"])){
+                $file = $files["thumb"];
+                if(!empty($file["type"]) && in_array($file["type"],$upload::isAllowed())){
+                    $url = $upload->upload($file,pathinfo($file["name"], PATHINFO_FILENAME),1920);
+                }
+            }
+
+            $news = new News;
+            if(!isset($url)){
+                $news->alter($data["news_id"],$data["title"], $data["caption"], preg_replace('/&nbsp;/','  ',$data["content"]),null, $data["category"], $data["branch"],$data["date"]);
             }else{
-                $url = $upload->upload($file,pathinfo($file["name"], PATHINFO_FILENAME),1920);
+                $news->alter($data["news_id"],$data["title"], $data["caption"], preg_replace('/&nbsp;/','  ',$data["content"]),$url, $data["category"], $data["branch"],$data["date"]);
+            }
+
+            if($news->fail()){
+                $news->fail()->getMessage();
             }
         }
-
-        $news = new News;
-        $news->add($data["title"], $data["caption"], $data["content"],$url, $data["category"], $data["branch"],$data["date"]);
-
-        if($news->fail()){
-            $news->fail()->getMessage();
-        }
-        header("Location:". url("admin/noticias/nova"));
+        header("Location:". url("admin/noticias"));
     }
 
     public function removeNews($data){

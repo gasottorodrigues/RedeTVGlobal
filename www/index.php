@@ -9,7 +9,9 @@
 
     $router->group(null);
     $router->get("/","Web:home");
-    $router->get("/noticia/{news_id}","Web:newsDetails");
+    $router->get("/regiao/{branch}","Web:regionNews");
+    $router->get("/regiao/{branch}/categoria/{category}","Web:categoryNews");
+    $router->get("/regiao/{branch}/categoria/{category}/noticia/{news_id}","Web:newsDetails");
 
 
     $router->group("admin");
@@ -29,22 +31,24 @@
     $router->post("/categorias/nova","Admin:saveCategory");
     $router->get("/categorias/delete/{cat_id}","Admin:removeCategory");
 
-    $router->get("/filiais","Admin:viewBranches");
-    $router->get("/filiais/nova","Admin:newBranch");
-    $router->post("/filiais/nova","Admin:saveBranch");
-    $router->get("/filiais/delete/{branch_id}","Admin:removeBranch");
+    $router->get("/regioes","Admin:viewBranches");
+    $router->get("/regioes/nova","Admin:newBranch");
+    $router->post("/regioes/nova","Admin:saveBranch");
+    $router->get("/regioes/delete/{branch_id}","Admin:removeBranch");
 
     $router->get("/noticias","Admin:viewNews");
     $router->get("/noticias/nova","Admin:newNews");
     $router->post("/noticias/nova","Admin:saveNews");
     $router->get("/noticias/delete/{news_id}","Admin:removeNews");
+    $router->get("/noticias/alter/{news_id}","Admin:alterNews");
+    $router->post("/noticias/alter/{news_id}","Admin:saveNews");
 
     $router->group("ooops");
     $router->get("/{errcode}","Web:error");
 
     $router->dispatch();
 
-    if($router->error()){
-        $router->redirect("/ooops/{$router->error()}");
-    }
+    // if($router->error()){
+    //     $router->redirect("/ooops/{$router->error()}");
+    // }
 ?>

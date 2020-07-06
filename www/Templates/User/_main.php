@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=$title;?></title>
-    <link rel="icon" href="<?=url("Templates/User/src/icon.png")?>" >
+    <link rel="icon" href="<?=url("shared/icon.png")?>" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?=url("Templates/User/css/interface.css")?>">
@@ -15,7 +15,7 @@
         <header class="main-header w-100 row" style="margin:0 0;">
                 <nav class="navbar navbar-expand-lg  col-12 col-lg-10">
                         <a class="navbar-brand" href="#">
-                            <img src="<?=url("Templates/User/src/logo-3.png")?>" alt="Global TV">
+                            <img src="<?=url("shared/logo-3.png")?>" alt="Global TV">
                         </a>
                         <button class="navbar-toggle navbar-toggler  navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon d-flex justify-content-center align-items-center">
@@ -25,11 +25,24 @@
 
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="<?=url("")?>">Home</a>
+                                
+                                <?php if(isset($actual_branch)): ?>
+                                <li class="nav-item disabled region">
+                                    <span class="nav-link" style="color:#DB640F;text-transform:uppercase;"><?=$actual_branch?></span>
                                 </li>
+                                <?php endif; ?>
+                
+                                <li class="nav-item active">
+                                    <?php if(!isset($actual_branch)): ?>
+                                    <a class="nav-link" href="<?=url("")?>">Home</a>
+                                    <?php else: ?>
+                                        <a class="nav-link" href="<?=url("regiao/".$branch_id)?>">Home</a>
+                                    <?php endif; ?>
+                                </li>
+
+                                <?php if(isset($actual_branch)): ?>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdownNews" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorias</a>
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownNews" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorias</a>
                                     
                                     <div class="dropdown-menu">
                                         <ul class="d-flex flex-column justify-content-between align-items-center">
@@ -37,24 +50,21 @@
                                                     foreach($cats as $cat):
                                                 ?>
                                                 <li>
-                                                    <a href="<?=url("")?>" class="nav-link"><?=$cat->description?></a>
+                                                    <a href="<?=url("regiao/".$branch_id."/categoria/".$cat->cat_id)?>" class="nav-link"><?=$cat->description?></a>
                                                 </li>
                                                 <?php 
                                                     endforeach; 
                                                 ?>
-                                                <li>
-                                                    <a href="<?=url("")?>" class="nav-link"><b>Mais opções</b></a>
-                                                </li>
                                             <?php
                                                 endif;
                                             ?>
-                                            
                                         </ul>
                                     </div>
                                 </li>
+                                <?php endif; ?>
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdownNews" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Região</a>
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownNews" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Região</a>
                                     
                                     <div class="dropdown-menu">
                                         <ul class="d-flex flex-column justify-content-between align-items-center">
@@ -62,12 +72,10 @@
                                                     foreach($branches as $branch):
                                                 ?>
                                                 <li>
-                                                    <a href="<?=url("")?>" class="nav-link"><?=$branch->name?></a>
+                                                    <a href="<?=url("regiao/".$branch->branch_id)?>" class="nav-link"><?=$branch->name?></a>
                                                 </li>
                                                 <?php 
                                                     endforeach; 
-                                                ?>
-                                            <?php
                                                 endif;
                                             ?>
                                         </ul>
@@ -105,12 +113,12 @@
             <?= $v->section("content");?>
         </div>
 
-        <footer class="w-100 main-footer p-4 d-flex justify-content-center">
-            <div class="col-md d-flex flex-column align-items-center">
-                <img src="<?=url("Templates/User/src/logo-1.png")?>" class="img-fluid w-50" >
+        <footer class="w-100 main-footer p-4 row m-0">
+            <div class="col-12 col-md-3 d-flex flex-column align-items-center">
+                <img src="<?=url("shared/logo-1.png")?>" class="img-fluid w-50" >
                 <span>Todos os Direitos Reservados &copy; 2020</span>
             </div>
-            <div class="col-md-5">
+            <div class="col-12 col-lg-5">
                 <header class="footer-header p-2">
                 Categorias Populares
                 </header>
@@ -123,7 +131,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-12 col-lg-4">
                 <header class="footer-header p-2">
                     Sobre
                 </header>

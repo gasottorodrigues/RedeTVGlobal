@@ -113,7 +113,7 @@ div.carousel-image{
     height: 400px;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
     background-position: center;
 
     display:flex;
@@ -144,7 +144,9 @@ div.carousel-image h2{
 /* CONTEUDO HOME */
 
 div.recent-news header.news-header h1{
-    font-size:1.5rem;
+    font-size:3rem;
+    color:#2d5987;
+    text-transform: uppercase;
 }
 
 div.recent-news header.news-header i.fa{
@@ -203,6 +205,7 @@ div.recent-news div.news div.news-square-thumb{
 /* CONFIGURAÇÃO DE NOTICIAS */
 header.news-header h1{
     font-size:5rem;
+    text-size-adjust: auto;
     margin-bottom:10px;
     border-bottom:1px solid #666;
 }
@@ -210,6 +213,7 @@ header.news-header h1{
 header.news-header h2{
     margin:0;
     font-size:1.5rem;
+    text-size-adjust: auto;
     color:#666;
 }
 
@@ -227,9 +231,46 @@ header.news-header span{
 }
 
 div.news-content{
+    width:100%;
+    margin-top:5px;
     padding:30px 0;
-    font-size:1.8rem;
+    font-size:1.5rem;
     text-align:justify;
+    color:#888;
+    border-bottom:1px solid #555;
+}
+
+div.news-content p{
+    display:block;
+    position:relative;
+    text-indent: 30px; 
+}
+
+div.news-content ul, div.news-content ol{
+    margin:10px 40px;
+}
+
+div.news-content ul li{
+    list-style-type: disc;
+}
+
+div.news-content blockquote{
+    margin:10px 40px;
+    padding:10px;
+    border-left:3px solid #0fcadc;
+    font-size:1.5rem;
+    color:#333;
+    font-style:italic;
+}
+div.other-news h1{
+    color:#0fcadc;
+}
+
+div.other-news div div h1{
+    font-size:1.3rem;
+    text-align: justify;
+}
+
+div.other-news div div h1 a{
     color:#666;
-    border-bottom:1px solid #666;
 }

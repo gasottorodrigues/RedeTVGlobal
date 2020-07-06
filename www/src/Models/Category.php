@@ -4,6 +4,8 @@ namespace Source\Models;
 
 use CoffeeCode\DataLayer\DataLayer;
 
+use Source\Models\News;
+
 class Category extends DataLayer{
 
     public function __construct()
@@ -37,6 +39,10 @@ class Category extends DataLayer{
      // Exclui uma categoria do banco de dados
     public function remove($cat_id): void
     {
+        $news = (new News)->find("category=:cat","cat={$cat_id}")->fetch(1);
+        foreach($news as $n){
+           $n->destroy();
+        }
         $categorie = $this->findById($cat_id);
         if($categorie){
            $categorie->destroy();
@@ -49,7 +55,7 @@ class Category extends DataLayer{
 
     // Famoso select *
     public function getAll(){
-        return $categorie->find()->fetch(true);
+        return $this->find()->fetch(true);
     }
 }
 

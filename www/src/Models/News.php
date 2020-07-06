@@ -9,7 +9,7 @@ class News extends DataLayer{
     public function __construct()
     {
         // parametros  na ordem: Tabela, campos obrigatórios, chave primária, timestamp(nao obrigatório);
-        parent::__construct("news",["title","caption","content","thumb_url","category","branch", "date"],"news_id");
+        parent::__construct("news",["title","caption","content","thumb_url","date","branch","category"],"news_id");
     }
     public function categoryName(){
         return (new Category)->findById($this->category)->description;
@@ -17,15 +17,15 @@ class News extends DataLayer{
     public function branchName(){
         return (new Branch)->findById($this->branch)->name;
     }
-    public function add(string $title, string $caption, string $content, string $thumb_url, $category, $branch,$date): News
+    public function add(string $title, string $caption, string $content, string $thumb_url, $date, $branch, $category): News
     {
         $this->title = $title;
         $this->caption = $caption;
         $this->content = $content;
         $this->thumb_url = $thumb_url;
-        $this->category = $category;
-        $this->branch = $branch;
         $this->date = $date;
+        $this->branch = $branch;
+        $this->category = $category;    
         $this->save();
 
         return $this;

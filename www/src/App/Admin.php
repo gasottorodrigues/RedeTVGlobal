@@ -195,7 +195,7 @@ class Admin
             die();
         }
 
-        header("Location:". url("admin/filiais"));
+        header("Location:". url("admin/regioes"));
     }
 
     public function removeBranch($data){
@@ -270,21 +270,38 @@ class Admin
         $upload = new \CoffeeCode\Uploader\Image("uploads","images");
         $files = $_FILES;
 
-        if(!isset($data["news_id"])){
+        if(!empty($files["thumb"])){
+            $file = $files["thumb"];
+        
+            if(empty($file["type"]) || !in_array($file["type"],$upload::isAllowed())){
+                echo "Sem imagem ou imagem inválida para a thumb! <br><a href='".url("admin/noticias/nova")."'>Voltar</a>"; 
+                die();
+            }else{
+                $url = $upload->upload($file,pathinfo($file["name"], PATHINFO_FILENAME),1920);
+            }
+        }
+
+        $news = new News;
+        $news->add($data["title"], $data["caption"],$data["content"],$url, $data["date"], $data["branch"], $data["category"]);
+
+
+        /*if(!isset($data["news_id"])){
+        
             if(!empty($files["thumb"])){
                 $file = $files["thumb"];
         
                 if(empty($file["type"]) || !in_array($file["type"],$upload::isAllowed())){
-                    echo "Sem imagem ou imagem inválida para a thumb"; 
+                    echo "Sem imagem ou imagem inválida para a thumb! <br><a href='".url("admin/noticias/nova")."'>Voltar</a>"; 
                     die();
                 }else{
                     $url = $upload->upload($file,pathinfo($file["name"], PATHINFO_FILENAME),1920);
                 }
             }
-
+            
             $news = new News;
-            $news->add($data["title"], $data["caption"], preg_replace('/&nbsp;/','  ',$data["content"]),$url, $data["category"], $data["branch"],$data["date"]);
-
+            $news->add($data["title"], $data["caption"],$data["content"],$url, $data["date"], $data["branch"], $data["category"]);
+                    //preg_replace('/&nbsp;/','  ',$data["content"])
+            
             if($news->fail()){
                 $news->fail()->getMessage();
             }
@@ -306,7 +323,7 @@ class Admin
             if($news->fail()){
                 $news->fail()->getMessage();
             }
-        }
+        }*/
         header("Location:". url("admin/noticias"));
     }
 

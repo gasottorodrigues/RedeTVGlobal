@@ -158,7 +158,7 @@ class Admin
         $cat = new Category;
         $cat->remove($data['cat_id']);
 
-        header("Location:". url("/admin/categorias"));
+        header("Location:". url("admin/categorias"));
     }
 
     //Controlador de ações com Filiais
@@ -172,7 +172,7 @@ class Admin
         $branch = (new Branch)->find()->fetch(true);
 
         echo $this->view->render("branches.php",[
-            "title"=> "Filiais | ". SITE,
+            "title"=> "Regiões | ". SITE,
             "branches" => $branch
         ]);
     }
@@ -184,6 +184,21 @@ class Admin
 
        echo $this->view->render("newbranch.php",[]);
     }
+
+    public function alterBranch($data)
+    {
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+        $branches = (new Branch)->findById($data["branch_id"]);
+
+        echo $this->view->render("alterbranches.php",[
+            "title"=> "Alterar Região | ". SITE,
+            "branches" => $branches
+        ]);
+        header("Location:".url("admin/regioes"));
+	}
 
     public function saveBranch($data){
         $branch = new Branch;
@@ -207,7 +222,7 @@ class Admin
         $branch = new Branch;
         $branch->remove($data['branch_id']);
 
-        header("Location:". url("/admin/filiais"));
+        header("Location:". url("admin/regioes"));
     }
 
     //Controladores de ações com notícias
@@ -270,22 +285,7 @@ class Admin
         $upload = new \CoffeeCode\Uploader\Image("uploads","images");
         $files = $_FILES;
 
-        if(!empty($files["thumb"])){
-            $file = $files["thumb"];
-        
-            if(empty($file["type"]) || !in_array($file["type"],$upload::isAllowed())){
-                echo "Sem imagem ou imagem inválida para a thumb! <br><a href='".url("admin/noticias/nova")."'>Voltar</a>"; 
-                die();
-            }else{
-                $url = $upload->upload($file,pathinfo($file["name"], PATHINFO_FILENAME),1920);
-            }
-        }
-
-        $news = new News;
-        $news->add($data["title"], $data["caption"],$data["content"],$url, $data["date"], $data["branch"], $data["category"]);
-
-
-        /*if(!isset($data["news_id"])){
+        if(!isset($data["news_id"])){
         
             if(!empty($files["thumb"])){
                 $file = $files["thumb"];
@@ -299,8 +299,8 @@ class Admin
             }
             
             $news = new News;
-            $news->add($data["title"], $data["caption"],$data["content"],$url, $data["date"], $data["branch"], $data["category"]);
-                    //preg_replace('/&nbsp;/','  ',$data["content"])
+            $news->add($data["title"], $data["caption"],preg_replace('/&nbsp;/','  ',$data["content"]),$url, $data["date"], $data["branch"], $data["category"]);
+                    
             
             if($news->fail()){
                 $news->fail()->getMessage();
@@ -323,7 +323,7 @@ class Admin
             if($news->fail()){
                 $news->fail()->getMessage();
             }
-        }*/
+        }
         header("Location:". url("admin/noticias"));
     }
 

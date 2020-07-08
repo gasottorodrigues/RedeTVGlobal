@@ -35,6 +35,7 @@
     $router->get("/regioes/nova","Admin:newBranch");
     $router->post("/regioes/nova","Admin:saveBranch");
     $router->get("/regioes/delete/{branch_id}","Admin:removeBranch");
+    $router->get("/regioes/alter/{branch_id}","Admin:alterBranch");
 
     $router->get("/noticias","Admin:viewNews");
     $router->get("/noticias/nova","Admin:newNews");

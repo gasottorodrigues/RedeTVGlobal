@@ -3,19 +3,21 @@
 
     if($branches):
         ?>
-        <table>  
+        <table class="table table-striped">  
             <tr>
-               <th>Filiais</th>
-               <th colspan="2">Ações</th>
+               <th>ID</th>
+               <th>Regiões</th>
+               <th colspan="2"> </th>
             </tr>
 
             <?php
             foreach($branches as $branch):
             ?>
                 <tr>
-                    <td><?=$branch->name; ?></td>
-                    <td><a href="<?=url("admin/filiais/delete/{$branch->branch_id}")?>">&times;</a></td>
-                    <td><a href="<?=url("admin/filiais/alter/{$branch->branch_id}")?>">0</a></td>
+                    <td><?=$branch->branch_id; ?></td>
+                    <td class="w-75"><?=$branch->name; ?></td>
+                    <td><a href="<?=url("admin/regioes/alter/{$branch->branch_id}")?>" class="fa fa-pencil-square-o"></a></td>
+                    <td><a href="<?=url("admin/regioes/delete/{$branch->branch_id}")?>" class="fa fa-times-circle"></a></td>
                 </tr>
             <?php
             endforeach;

@@ -159,3 +159,29 @@ header.main-header a.fa{
     cursor:pointer;
     transition:all 0.2s;
 }
+
+/*Tabelas*/
+
+table tr td a.fa{
+    font-size:2rem;
+}
+
+table tr td a:hover{
+    text-decoration:none;
+}
+
+table tr td a.fa-times-circle{
+    color:#d00;
+}
+
+table tr td a.fa-times-circle:hover{
+    color:#a00;
+}
+
+table tr td a.fa-pencil-square-o{
+    color:#f2a43d;
+}
+
+table tr td a.fa-pencil-square-o:hover{
+    color:#b3782d;
+}

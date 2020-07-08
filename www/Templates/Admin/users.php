@@ -3,21 +3,21 @@
 
     if($users):
         ?>
-        <table>  
+        <table  class="table table-striped">  
             <tr>
                <th>Apelido</th>
                <th>E-mail</th>
-               <th colspan="2">Ações</th>
+               <th colspan="2"> </th>
             </tr>
 
             <?php
             foreach($users as $user):
             ?>
                 <tr>
-                    <td><?=$user->nickname; ?></td>
-                    <td><?=$user->email; ?></td>
-                    <td><a href="<?=url("admin/usuarios/delete/{$user->user_id}")?>">&times;</a></td>
-                    <td><a href="<?=url("admin/usuarios/alter/{$user->user_id}")?>">0</a></td>
+                    <td class="w-25"><?=$user->nickname; ?></td>
+                    <td class="w-50"><?=$user->email; ?></td>
+                    <td><a href="<?=url("admin/usuarios/delete/{$user->user_id}")?>" class="fa fa-pencil-square-o"></a></td>
+                    <td><a href="<?=url("admin/usuarios/alter/{$user->user_id}")?>" class="fa fa-times-circle"></a></td>
                 </tr>
             <?php
             endforeach;

@@ -24,11 +24,16 @@
     $router->get("/usuarios","Admin:viewUsers");
     $router->get("/usuarios/novo","Admin:newUser");
     $router->post("/usuarios/novo","Admin:saveUser");
+    $router->get("/usuarios/alter/{user_id}","Admin:alterUser");
+    $router->post("/usuarios/alter/{user_id}","Admin:saveUser");
     $router->get("/usuarios/delete/{user_id}","Admin:removeUser");
+
 
     $router->get("/categorias","Admin:viewCategories");
     $router->get("/categorias/nova","Admin:newCategory");
     $router->post("/categorias/nova","Admin:saveCategory");
+    $router->get("/categorias/alter/{cat_id}","Admin:alterCategory");
+    $router->post("/categorias/alter/{cat_id}","Admin:saveCategory");
     $router->get("/categorias/delete/{cat_id}","Admin:removeCategory");
 
     $router->get("/regioes","Admin:viewBranches");
@@ -36,6 +41,8 @@
     $router->post("/regioes/nova","Admin:saveBranch");
     $router->get("/regioes/delete/{branch_id}","Admin:removeBranch");
     $router->get("/regioes/alter/{branch_id}","Admin:alterBranch");
+    $router->post("/regioes/alter/{branch_id}","Admin:saveBranch");
+    
 
     $router->get("/noticias","Admin:viewNews");
     $router->get("/noticias/nova","Admin:newNews");

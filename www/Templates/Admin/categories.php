@@ -16,8 +16,8 @@
                 <tr>
                     <td><?=$cat->cat_id; ?></td>
                     <td class="w-75"><?=$cat->description; ?></td>
-                    <td><a href="<?=url("admin/categorias/delete/{$cat->cat_id}")?>" class="fa fa-pencil-square-o"></a></td>
-                    <td><a href="<?=url("admin/categorias/alter/{$cat->cat_id}")?>" class="fa fa-times-circle"></a></td>
+                    <td><a href="<?=url("admin/categorias/alter/{$cat->cat_id}")?>" class="fa fa-pencil-square-o"></a></td>
+                    <td><a href="<?=url("admin/categorias/delete/{$cat->cat_id}")?>" class="fa fa-times-circle"></a></td>
                 </tr>
             <?php
             endforeach;

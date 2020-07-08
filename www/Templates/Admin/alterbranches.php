@@ -2,23 +2,24 @@
 	$v->layout("_main.php");
 ?>
 
-<div>
+<div class="p-5 text-center news-form">
 
 	<h1>Alterar Região</h1>
-	<form action="<?=url("admin/regioes/alter/".$branches->branch_id)?>" method="post">
+	<form action="<?=url("admin/regioes/alter/".$branch->branch_id)?>" method="post">
 		
 		<?php
-			if($branches):
+			if($branch):
 		?>
-			<div>
-				<input type="text" name="branch" value="<?=$branches->name;?>">
+			<div class="row m-0 text-center">
+				<input type="text" name="name" class="col-12 title" value="<?=$branch->name;?>">
 			</div>
+
+			<button type="submit" class="w-50 submit">Salvar Região</button>
+
 		<?php
 			endif;
 		?>
 			
-			<button type="submit" class="w-50 submit">Salvar Região</button>
-
 	</form>
 
 </div>

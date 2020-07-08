@@ -88,17 +88,43 @@ class Admin
         $email = $data["email"];
         $pass = md5($data["passwd"]);
 
-        $user = new User();
-        $user->add($nick,$email,$pass);
+        if(!isset($data["user_id"])){
+            $user = new User();
+            $user->add($nick,$email,$pass);
 
-        if($user->fail()){
-            echo "Algo deu errado :( <br>";
-            echo $user->fail()->getMessage();
-            die();
-        }
+            if($user->fail()){
+                echo "Algo deu errado :( <br>";
+                echo $user->fail()->getMessage();
+                die();
+            }
+        }else{
+            $user = new User();
+            $user->alter($data["user_id"],$nick,$email,$pass);
+
+            if($user->fail()){
+                echo "Algo deu errado :( <br>";
+                echo $user->fail()->getMessage();
+                die();
+            }
+		}
 
         header("Location:".url("admin/usuarios"));
     }
+
+    public function alterUser($data)
+    {
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+        $user = (new User)->findById($data["user_id"]);
+
+        echo $this->view->render("alteruser.php",[
+            "title"=> "Alterar Usuário | ". SITE,
+            "user" => $user
+        ]);
+
+	}
 
     public function removeUser($data){
 
@@ -137,17 +163,46 @@ class Admin
     }
 
     public function saveCategory($data){
-        $cat = new Category;
-        $cat->add($data["desc"]);
+        
+        if(!isset($data["cat_id"])){
+            $cat = new Category;
+            $cat->add($data["desc"]);
 
-        if($cat->fail()){
-            echo"Algo deu errado :(";
-            echo $cat->fail()->getMessage();
-            die();
+            if($cat->fail()){
+                echo"Algo deu errado :(";
+                echo $cat->fail()->getMessage();
+                die();
+            }
+        }
+        else 
+        {
+            $cat = new Category;
+            $cat->alter($data["cat_id"], $data["desc"]);
+
+            if($cat->fail()){
+                echo"Algo deu errado :(";
+                echo $cat->fail()->getMessage();
+                die();
+            }
         }
 
         header("Location:". url("/admin/categorias"));
     }
+
+    public function alterCategory($data)
+    {
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+        $cat = (new Category)->findById($data["cat_id"]);
+
+        echo $this->view->render("altercategory.php",[
+            "title"=> "Alterar Categoria | ". SITE,
+            "cat" => $cat
+        ]);
+
+	}
 
     public function removeCategory($data){
 
@@ -191,24 +246,31 @@ class Admin
             header("Location:".url("admin/login"));
         }
 
-        $branches = (new Branch)->findById($data["branch_id"]);
+        $branch = (new Branch)->findById($data["branch_id"]);
 
         echo $this->view->render("alterbranches.php",[
             "title"=> "Alterar Região | ". SITE,
-            "branches" => $branches
+            "branch" => $branch
         ]);
-        header("Location:".url("admin/regioes"));
+
 	}
 
     public function saveBranch($data){
+
+    if(!isset($data["branch_id"])){
         $branch = new Branch;
         $branch->add($data["name"]);
-
+       
         if($branch->fail()){
             echo"Algo deu errado :(";
             echo $branch->fail()->getMessage();
             die();
         }
+    }else
+    {
+        $branch = new Branch;
+        $branch->alter($data["branch_id"], $data["name"]);
+	}
 
         header("Location:". url("admin/regioes"));
     }

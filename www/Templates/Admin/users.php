@@ -16,8 +16,8 @@
                 <tr>
                     <td class="w-25"><?=$user->nickname; ?></td>
                     <td class="w-50"><?=$user->email; ?></td>
-                    <td><a href="<?=url("admin/usuarios/delete/{$user->user_id}")?>" class="fa fa-pencil-square-o"></a></td>
-                    <td><a href="<?=url("admin/usuarios/alter/{$user->user_id}")?>" class="fa fa-times-circle"></a></td>
+                    <td><a href="<?=url("admin/usuarios/alter/{$user->user_id}")?>" class="fa fa-pencil-square-o"></a></td>
+                    <td><a href="<?=url("admin/usuarios/delete/{$user->user_id}")?>" class="fa fa-times-circle"></a></td>
                 </tr>
             <?php
             endforeach;

@@ -26,8 +26,8 @@
     <?php
     else:
     ?>
-        <div>
-            <h1>Sem filiais cadastradas.</h1>
+        <div class="alert alert-danger">
+            <h1 style="text-align: center;">Sem regiões cadastradas.</h1>
         </div>
     <?php
         endif;

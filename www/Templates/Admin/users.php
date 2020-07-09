@@ -26,9 +26,8 @@
     <?php
     else:
     ?>
-        <div>
-            <h1>Sem Usuários cadastrados</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, corrupti beatae incidunt eligendi quibusdam eos aspernatur dolor provident modi illo assumenda ullam neque amet in dolores aut. Ad, consectetur provident.</p>
+        <div class="alert alert-danger">
+            <h1 style="text-align: center;">Sem Usuários cadastrados.</h1>
         </div>
     <?php
         endif;

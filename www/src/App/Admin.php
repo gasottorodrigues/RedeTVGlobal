@@ -296,10 +296,13 @@ class Admin
 
         $news = (new News)->find()->fetch(true);
 
-        foreach($news as $new){
-            $new->category = $new->categoryName();
-            $new->branch = $new->branchName();
-        }
+        if(isset($news)):
+            foreach($news as $new){
+                $new->category = $new->categoryName();
+                $new->branch = $new->branchName();
+            }
+        endif;
+
 
         echo $this->view->render("news.php",[
             "title"=> "Notícias | ". SITE,
@@ -399,5 +402,26 @@ class Admin
 
         header("Location:". url("/admin/noticias"));
     }
+
+    //Controladores de ação com fotos das notícias
+    public function newPhotos($data){
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+        echo $this->view->render("newphotos.php",[
+            "title" => "Novas Fotos | ". SITE,
+        ]);
+
+	}
+
+    public function savePhotos($data){
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+       
+	}
+
 }
 ?>

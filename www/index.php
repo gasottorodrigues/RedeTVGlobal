@@ -15,7 +15,7 @@
 
 
     $router->group("admin");
-    $router->get("/","Admin:home");
+    $router->get("/","Admin:viewNews");
 
     $router->get("/login","Admin:login");
     $router->post("/login","Admin:checkLogin");
@@ -47,9 +47,10 @@
     $router->get("/noticias","Admin:viewNews");
     $router->get("/noticias/nova","Admin:newNews");
     $router->post("/noticias/nova","Admin:saveNews");
-    $router->get("/noticias/delete/{news_id}","Admin:removeNews");
+    $router->get("/noticias/delete/{news_id}","Admin:removeNews");  
     $router->get("/noticias/alter/{news_id}","Admin:alterNews");
     $router->post("/noticias/alter/{news_id}","Admin:saveNews");
+    $router->get("/noticias/fotos/{news_id}","Admin:newPhotos");
 
     $router->group("ooops");
     $router->get("/{errcode}","Web:error");

@@ -15,7 +15,7 @@
         <header class="main-header w-100 row" style="margin:0 0;">
                 <nav class="navbar navbar-expand-lg  col-12 col-lg-10">
                         <a class="navbar-brand" href="#">
-                            <img src="<?=url("shared/logo-3.png")?>" alt="Global TV">
+                            <img src="<?=url("shared/logo-5.jpg")?>" alt="Global TV">
                         </a>
                         <button class="navbar-toggle navbar-toggler  navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon d-flex justify-content-center align-items-center">
@@ -28,7 +28,7 @@
                                 
                                 <?php if(isset($actual_branch)): ?>
                                 <li class="nav-item disabled region">
-                                    <span class="nav-link" style="color:#DB640F;text-transform:uppercase;"><?=$actual_branch?></span>
+                                    <span class="nav-link" style="color:#0000CD;text-transform:uppercase;font-weight:bold;"><?=$actual_branch?></span>
                                 </li>
                                 <?php endif; ?>
                 
@@ -64,7 +64,7 @@
                                 <?php endif; ?>
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownNews" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Região</a>
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownNews" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">TVS</a>
                                     
                                     <div class="dropdown-menu">
                                         <ul class="d-flex flex-column justify-content-between align-items-center">

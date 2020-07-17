@@ -408,20 +408,54 @@ class Admin
         if(!$this->isLogged()){
             header("Location:".url("admin/login"));
         }
-
+           
+        $news_id = (new News)->findById($data["news_id"]);
+        
         echo $this->view->render("newphotos.php",[
             "title" => "Novas Fotos | ". SITE,
+            "news_id" => $news_id
         ]);
 
 	}
 
-    public function savePhotos($data){
+    /*public function savePhotos($data){
+        $upload = new \CoffeeCode\Uploader\Image("noticias","fotos");
+        $files = $_FILES;
+        
         if(!$this->isLogged()){
             header("Location:".url("admin/login"));
         }
 
+        if(!empty($files["fotos"])){
+            $fotos = $files["fotos"];
+            
+            for($i=0; $i < count($fotos["type"]); $i++){
+                foreach(array_keys($fotos) as $keys){
+                    $imageFiles[$i][$keys] = $fotos[$keys][$i];
+				}     
+			}
+            foreach($imageFiles as $file){
+                if(empty($file["type"])){
+                    echo "Sem imagem ou imagem inválida para a thumb! <br><a href='".url("admin/noticias/fotos/".$data["news_id"])."'>Voltar</a>"; 
+                    die();
+                }elseif(!in_array($file["type"],$upload::isAllowed())){
+                    echo "O arquivo {$file["name"]} não é válido!";
+				}
+                else{
+                    $foto_url = $upload->upload($file,pathinfo($file["name"], PATHINFO_FILENAME),1920);
+                }
+			}
+		}
+
+        if($foto_url){
+            foreach
+                $photos = new Photos;
+                $photos->add($foto_url, $data["news_id"]);
+		}
+
+       header("Location:".url("admin/noticias"));
        
-	}
+	}*/
 
 }
 ?>

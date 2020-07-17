@@ -13,7 +13,7 @@ div.main-container{
 /* CABECALHO DA PAGINA */
 
 header.main-header{
-    background:#2d5987;
+    background:#00BFFF;
     color:white;
     margin:0 0 !important;
 }
@@ -29,7 +29,9 @@ header.main-header nav a{
 }
 
 header.main-header nav a:hover{
-    color:black;
+    color:#0000CD;
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 header.main-header .navbar .navbar-brand img{

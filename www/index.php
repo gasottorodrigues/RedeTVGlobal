@@ -51,6 +51,7 @@
     $router->get("/noticias/alter/{news_id}","Admin:alterNews");
     $router->post("/noticias/alter/{news_id}","Admin:saveNews");
     $router->get("/noticias/fotos/{news_id}","Admin:newPhotos");
+    $router->post("/noticias/fotos/{news_id}","Admin:savePhotos");
 
     $router->group("ooops");
     $router->get("/{errcode}","Web:error");

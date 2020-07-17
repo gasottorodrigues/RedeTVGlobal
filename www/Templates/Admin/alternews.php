@@ -4,7 +4,7 @@
 ?>
 
 <div class="p-5 text-center news-form">
-    <h1> Criando nova notícia</h1>
+    <h1>Alterar notícia</h1>
     <form action="<?=url("admin/noticias/alter/".$news->news_id)?>" method="post" enctype="multipart/form-data">
          <div class="row m-0 text-center">
             <input type="text" name="title" class="col-12 title" placeholder="Título" value="<?=$news->title?>">

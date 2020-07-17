@@ -22,7 +22,7 @@ class Web
         $recent_news = (new News)->find()->limit(5)->order("updated_at DESC")->fetch(true);
 
         echo $this->view->render("home.php",[
-            "title" => "Homepage | ". SITE,
+            "title" => "Home | ". SITE,
             "cats" => $cats,
             "branches" => $branches,
             "news" => $recent_news
@@ -38,7 +38,7 @@ class Web
         $recent_news = (new News)->find("branch=:b","b={$data["branch"]}")->limit(5)->order("updated_at DESC")->fetch(true);
 
         echo $this->view->render("home.php",[
-            "title" => "Homepage | ". SITE,
+            "title" => "Home | ". SITE,
             "cats" => $cats,
             "branches" => $branches,
             "news" => $recent_news,
@@ -57,7 +57,7 @@ class Web
         $recent_news = (new News)->find("branch=:b AND category=:c","b={$data["branch"]}&c={$data["category"]}")->order("updated_at DESC")->fetch(true);
 
         echo $this->view->render("homeCategory.php",[
-            "title" => "Homepage | ". SITE,
+            "title" => "Home | ". SITE,
             "cats" => $cats,
             "branches" => $branches,
             "news" => $recent_news,

@@ -21,7 +21,7 @@
         <img src="<?=url($news->thumb_url)?>" style="width:100%">
     </div>
 
-    <div class="news-content">
+    <div class="news-content" style="color:#000;">
         <?=$news->content?>
     </div>
     

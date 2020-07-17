@@ -2,20 +2,18 @@
     $v->layout("_main.php"); 
 ?>
 
-<div class="form-div">
+<div class="p-5 text-center news-form">
     <h1>Novo Usuário</h1>
     <form action="<?=url("admin/usuarios/novo")?>" method="post">
-        <div class="form-group">
-            <input type="text" name="nickname" placeholder="Nick">
+        <div class="row m-0 text-center">
+            <input type="text" name="nickname" class="col-12 title" placeholder="Nick">
         </div>
-        <div class="form-group">
-            <input type="mail" name="email" placeholder="E-mail">
+        <div class="row m-0 text-center">
+            <input type="mail" name="email" class="col-12 title" placeholder="E-mail">
         </div>
-        <div class="form-group">
-            <input type="password" name="passwd" placeholder="Senha">
+        <div class="row m-0 text-center">
+            <input type="password" name="passwd" class="col-12 title" placeholder="Senha">
         </div>
-        <div class="form-group">
-            <button type="submit">Cadastrar</button>
-        </div>
+       <button type="submit" class="w-50 submit">Salvar User</button>
     </form>
 </div>

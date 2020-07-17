@@ -2,10 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\www",
+    "\\www\\shared",
     "\\www\\src",
+    "\\www\\src\\App",
     "\\www\\Templates",
-    "\\www\\Templates\\Admin"
+    "\\www\\Templates\\User",
+    "\\www\\vendor",
+    "\\www\\vendor\\league",
+    "\\www\\vendor\\league\\plates\\src\\RenderTemplate"
   ],
-  "SelectedNode": "\\www\\Templates\\Admin\\news.php",
+  "SelectedNode": "\\www\\shared\\logo-4.jpg",
   "PreviewInSolutionExplorer": false
 }

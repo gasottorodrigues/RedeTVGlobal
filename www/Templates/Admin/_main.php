@@ -50,10 +50,13 @@
                                                 <a href="<?=url("admin/categorias/nova")?>" class="nav-link">Categoria</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="<?=url("admin/regioes/nova")?>" class="nav-link">Região</a>
+                                                <a href="<?=url("admin/regioes/nova")?>" class="nav-link">TV</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a href="<?=url("admin/usuarios/novo")?>" class="nav-link">Usuário</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="<?=url("admin/lives/nova")?>" class="nav-link">Live</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -71,10 +74,13 @@
                                                 <a href="<?=url("admin/categorias")?>" class="nav-link">Categorias</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="<?=url("admin/regioes")?>" class="nav-link">Regiões</a>
-                                            </li>
+                                                <a href="<?=url("admin/regioes")?>" class="nav-link">TVS</a>
+                                            </li>                                        
                                             <li class="nav-item">
                                                 <a href="<?=url("admin/usuarios")?>" class="nav-link">Usuários</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="<?=url("admin/lives")?>" class="nav-link">Lives</a>
                                             </li>
                                         </ul>
                                     </div>

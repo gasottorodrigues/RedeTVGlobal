@@ -159,7 +159,9 @@ class Admin
             header("Location:".url("admin/login"));
         }
 
-        echo $this->view->render("newcategory.php",[]);
+        echo $this->view->render("newcategory.php",[
+            "title"=> "Nova Categoria | ". SITE
+        ]);
     }
 
     public function saveCategory($data){
@@ -227,7 +229,7 @@ class Admin
         $branch = (new Branch)->find()->fetch(true);
 
         echo $this->view->render("branches.php",[
-            "title"=> "Regiões | ". SITE,
+            "title"=> "TVS | ". SITE,
             "branches" => $branch
         ]);
     }
@@ -237,7 +239,9 @@ class Admin
             header("Location:".url("admin/login"));
         }
 
-       echo $this->view->render("newbranch.php",[]);
+       echo $this->view->render("newbranch.php",[
+            "title"=> "TVS | " . SITE
+       ]);
     }
 
     public function alterBranch($data)
@@ -403,59 +407,20 @@ class Admin
         header("Location:". url("/admin/noticias"));
     }
 
-    //Controladores de ação com fotos das notícias
-    public function newPhotos($data){
+    //Controladores de ação com lives
+    public function newLive($data)
+    {
         if(!$this->isLogged()){
             header("Location:".url("admin/login"));
         }
-           
-        $news_id = (new News)->findById($data["news_id"]);
-        
-        echo $this->view->render("newphotos.php",[
-            "title" => "Novas Fotos | ". SITE,
-            "news_id" => $news_id
+
+        $branches = (new Branch)->find()->fetch(true);
+
+        echo $this->view->render("newlive.php",[
+            "title" => "Nova live | ". SITE,
+            "branches" => $branches
         ]);
-
-	}
-
-    /*public function savePhotos($data){
-        $upload = new \CoffeeCode\Uploader\Image("noticias","fotos");
-        $files = $_FILES;
-        
-        if(!$this->isLogged()){
-            header("Location:".url("admin/login"));
-        }
-
-        if(!empty($files["fotos"])){
-            $fotos = $files["fotos"];
-            
-            for($i=0; $i < count($fotos["type"]); $i++){
-                foreach(array_keys($fotos) as $keys){
-                    $imageFiles[$i][$keys] = $fotos[$keys][$i];
-				}     
-			}
-            foreach($imageFiles as $file){
-                if(empty($file["type"])){
-                    echo "Sem imagem ou imagem inválida para a thumb! <br><a href='".url("admin/noticias/fotos/".$data["news_id"])."'>Voltar</a>"; 
-                    die();
-                }elseif(!in_array($file["type"],$upload::isAllowed())){
-                    echo "O arquivo {$file["name"]} não é válido!";
-				}
-                else{
-                    $foto_url = $upload->upload($file,pathinfo($file["name"], PATHINFO_FILENAME),1920);
-                }
-			}
-		}
-
-        if($foto_url){
-            foreach
-                $photos = new Photos;
-                $photos->add($foto_url, $data["news_id"]);
-		}
-
-       header("Location:".url("admin/noticias"));
-       
-	}*/
+    }
 
 }
 ?>

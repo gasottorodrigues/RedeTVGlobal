@@ -30,7 +30,6 @@
                     <td>
                       <a href="<?=url("admin/noticias/delete/{$new->news_id}")?>" class="fa fa-times-circle"></a>
                     </td>
-                   <td><a href="<?=url("admin/noticias/fotos/{$new->news_id}")?>" class="fa fa-camera-retro"></a></td>
                 </tr>
             <?php
                 endforeach;

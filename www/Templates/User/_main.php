@@ -15,7 +15,7 @@
         <header class="main-header w-100 row" style="margin:0 0;">
                 <nav class="navbar navbar-expand-lg  col-12 col-lg-10">
                         <a class="navbar-brand" href="#">
-                            <img src="<?=url("shared/logo-5.jpg")?>" alt="Global TV">
+                            <img src="<?=url("shared/logo-6.jpeg")?>" alt="Global TV">
                         </a>
                         <button class="navbar-toggle navbar-toggler  navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon d-flex justify-content-center align-items-center">

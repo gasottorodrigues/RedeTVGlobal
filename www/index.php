@@ -12,6 +12,7 @@
     $router->get("/regiao/{branch}","Web:regionNews");
     $router->get("/regiao/{branch}/categoria/{category}","Web:categoryNews");
     $router->get("/regiao/{branch}/categoria/{category}/noticia/{news_id}","Web:newsDetails");
+    $router->get("/lives","Web:shareLives");
 
 
     $router->group("admin");
@@ -54,7 +55,7 @@
     $router->get("/lives","Admin:viewLives");
     $router->get("/lives/nova","Admin:newLive");
     $router->post("/lives/nova","Admin:saveLive");
-    $router->get("/lives/delete/{live_id}","Admin:removeLive"); 
+    $router->get("/lives/delete/{id_lives}","Admin:removeLive"); 
 
     $router->group("ooops");
     $router->get("/{errcode}","Web:error");

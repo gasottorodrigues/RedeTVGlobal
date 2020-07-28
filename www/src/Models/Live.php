@@ -8,20 +8,32 @@ class Live extends DataLayer{
 
     public function __construct()
     {
-        // parametros  na ordem: Tabela, campos obrigatórios, chave primária, timestamp(nao obrigatório);
-        parent::__construct("lives",["url","titulo","id_tv","data"],"id");
+        // parametros  na ordem: Tabela, campos obrigatorios, chave primÃ¡ria, timestamp(nao obrigatï¿½rio);
+        parent::__construct("lives",["url","titulo","id_tv","data_post"],"id_lives");
     }
 
     public function add(string $url, string $titulo, $id_tv, $date): Live
-    {
+    {   
         $this->url = $url;
         $this->titulo = $titulo;
         $this->id_tv = $id_tv;
-        $this->data = $date;
+        $this->data_post = $date;
         $this->save();
 
         return $this;
     }
+
+    public function remove($id_lives): void
+    {
+        $live = $this->findById($id_lives);
+        if($live){
+           $live->destroy();
+        }else{
+            echo "<pre>";
+            var_dump($live);
+            echo "</pre>";
+        }
+	}
 }
 
 ?>

@@ -49,25 +49,53 @@
     </a>
 </div>
 
+
 <div class="container recent-news p-5 w-100">
+    
     <header class="news-header">
         <h1>Notícias Recentes <i class="fa fa-newspaper-o" aria-hidden="true"></i></h1>
     </header>
+
+    <div class="w-100 d-flex justify-content-center">
     
-    <?php
-        if(isset($news)):
-        foreach($news as $n): 
-    ?>
-        <div class="news w-75">
-            <div class="news-square-thumb" style="background-image:url(<?=url($n->thumb_url)?>)"></div>
-            <div class="news-desc">
-                <h1><a href="<?=url("regiao/{$n->branch}/categoria/{$n->category}/noticia/{$n->news_id}")?>"><?=$n->title?></a></h1>
-                <h2><?=$n->caption?></h2>
+        <div class="p-2 w-75">
+        <?php
+            if(isset($news)):
+            foreach($news as $n): 
+        ?>
+            <div class="news">
+                <div class="news-square-thumb" style="background-image:url(<?=url($n->thumb_url)?>)"></div>
+                <div class="news-desc">
+                    <h1><a href="<?=url("regiao/{$n->branch}/categoria/{$n->category}/noticia/{$n->news_id}")?>"><?=$n->title?></a></h1>
+                    <h2><?=$n->caption?></h2>
+                </div>
             </div>
+        <?php 
+            endforeach;
+        endif;
+        ?>
         </div>
-    <?php 
-        endforeach;
-    endif;
-    ?>
+
+        <div class="ad-container d-none d-lg-block w-25">
+            <h1>Anúncios</h1>
+            <?php
+            if(isset($news)):
+            foreach($news as $n): 
+        ?>
+            <div class="ad p-2">
+                <div class="ad-thumb" style="background-image:url(<?=url($n->thumb_url)?>)"></div>
+                <div class="ad-link">
+                    <a href="<?=url("regiao/{$n->branch}/categoria/{$n->category}/noticia/{$n->news_id}")?>"><?=$n->caption?></a></h1>
+                </div>
+            </div>
+        <?php 
+            endforeach;
+        endif;
+        ?>
+        </div>
+
+        
+    </div>
+          
 
 </div>

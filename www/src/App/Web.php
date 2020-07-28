@@ -6,6 +6,7 @@ use League\Plates\Engine;
 use Source\Models\Category;
 use Source\Models\Branch;
 use Source\Models\News;
+use Source\Models\Live;
 
 class Web
 {
@@ -16,8 +17,11 @@ class Web
     }
 
     public function home($data){
-        $cats = (new Category)->find()->limit(5)->fetch(true);
-        $branches = (new Branch)->find()->limit(5)->fetch(true);
+        $cats = (new Category)->find()->fetch(true);
+        $branches = (new Branch)->find()->fetch(true);
+
+        $rdpcats = (new Category)->find()->fetch(true);
+        $rdpbranches = (new Branch)->find()->fetch(true);
 
         $recent_news = (new News)->find()->limit(5)->order("updated_at DESC")->fetch(true);
 
@@ -25,13 +29,17 @@ class Web
             "title" => "Home | ". SITE,
             "cats" => $cats,
             "branches" => $branches,
-            "news" => $recent_news
+            "news" => $recent_news,
+            "rdpcats" => $rdpcats,
+            "rdpbranches" => $rdpbranches
         ]);
     }
 
     public function regionNews($data){
         $cats = (new Category)->find()->fetch(true);
         $branches = (new Branch)->find()->fetch(true);
+        $rdpcats = (new Category)->find()->fetch(true);
+        $rdpbranches = (new Branch)->find()->fetch(true);
 
         $branch_name = (new Branch)->findById($data["branch"])->name;
 
@@ -44,6 +52,8 @@ class Web
             "news" => $recent_news,
             "actual_branch" => $branch_name,
             "branch_id" => $data["branch"],
+            "rdpcats" => $rdpcats,
+            "rdpbranches" => $rdpbranches
         ]);
     }
 
@@ -64,7 +74,9 @@ class Web
             "actual_branch" => $branch_name,
             "branch_id" => $data["branch"],
             "cat_id" => $data["category"],
-            "actual_category" => $category_name
+            "actual_category" => $category_name,
+            "rdpcats" => $cats,
+            "rdpbranches" => $branches
         ]);
 
     }
@@ -92,9 +104,22 @@ class Web
             "category" => $cat->description,
             "cat_id" => $data["category"],
             "branch" => $bnc->name,
-            "others" => $others
+            "others" => $others,
         ]);
     }
+
+    public function shareLives($data){
+        $lives = (new Live)->find()->fetch(true);
+        $cats = (new Category)->find()->fetch(true);
+        $branches = (new Branch)->find()->fetch(true);
+
+        echo $this->view->render("lives.php",[
+            "title" => "Lives | ". SITE,
+            "lives" => $lives,
+            "cats" => $cats,
+            "branches" => $branches
+        ]);
+	}
 
     public function error($data){
         echo $this->view->render("error.php",[

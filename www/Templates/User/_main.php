@@ -14,8 +14,8 @@
 
         <header class="main-header w-100 row" style="margin:0 0;">
                 <nav class="navbar navbar-expand-lg  col-12 col-lg-10">
-                        <a class="navbar-brand" href="#">
-                            <img src="<?=url("shared/logo-6.jpeg")?>" alt="Global TV">
+                        <a class="navbar-brand" href="<?=url("")?>">
+                            <img src="<?=url("shared/logo-2.png")?>" alt="Global TV">
                         </a>
                         <button class="navbar-toggle navbar-toggler  navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon d-flex justify-content-center align-items-center">
@@ -83,7 +83,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="<?=url("")?>" class="nav-link">Live</a>
+                                    <a href="<?=url("lives")?>" class="nav-link">Live</a>
                                 </li>
 
                                 <li class="nav-item">
@@ -97,12 +97,6 @@
                             <li class="nav-item">
                                 <a href="" class="nav-link fa fa-facebook"></a>
                             </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link fa fa-instagram"></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link fa fa-twitter"></a>
-                            </li>
                         </ul>
                     </nav>
                
@@ -114,24 +108,35 @@
         </div>
 
         <footer class="w-100 main-footer p-4 row m-0">
-            <div class="col-12 col-md-3 d-flex flex-column align-items-center">
+            <div class="col-12 col-lg-3 d-flex flex-column align-items-center">
                 <img src="<?=url("shared/logo-1.png")?>" class="img-fluid w-50" >
                 <span>Todos os Direitos Reservados &copy; 2020</span>
             </div>
-            <div class="col-12 col-lg-5">
+            <div class="col-12 col-lg-3">
                 <header class="footer-header p-2">
-                Categorias Populares
+                TVs
                 </header>
                 <div class="footer-list ">
                     <ul>
-                        <li>Esporte (30)</li>
-                        <li>Política (20)</li>
-                        <li>Entretenimento (15)</li>
-                        <li>Ciência (10)</li>
+                        <?php foreach($branches as $b): ?>
+                            <li><?=$b->name?></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-3">
+                <header class="footer-header p-2">
+                Categorias
+                </header>
+                <div class="footer-list ">
+                    <ul>
+                        <?php foreach($cats as $c): ?>
+                            <li><?=$c->description?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3">
                 <header class="footer-header p-2">
                     Sobre
                 </header>

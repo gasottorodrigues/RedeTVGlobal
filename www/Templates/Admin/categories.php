@@ -3,12 +3,14 @@
 
     if($cats):
         ?>
-        <table class="table table-striped">  
-            <tr>
-               <th>ID</th>
-               <th>Categorias</th>
-               <th colspan="2"></th>
-            </tr>
+        <table class="table table-striped">
+            <thead> 
+                <tr>
+                <th>ID</th>
+                <th>Categorias</th>
+                <th colspan="2"></th>
+                </tr>
+            </thead>
 
             <?php
             foreach($cats as $cat):

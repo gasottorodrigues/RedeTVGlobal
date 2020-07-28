@@ -13,6 +13,7 @@
           <th scope="col">Categoria</th>
           <th scope="col">Região</th>
           <th scope="col">Data</th>
+          <th scope="col" colspan="2">Ações</th>
         </tr>
       </thead>
       <tbody>

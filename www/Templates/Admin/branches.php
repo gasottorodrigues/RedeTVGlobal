@@ -3,12 +3,14 @@
 
     if($branches):
         ?>
-        <table class="table table-striped">  
-            <tr>
-               <th>ID</th>
-               <th>Regiões</th>
-               <th colspan="2"> </th>
-            </tr>
+        <table class="table table-striped">
+            <thead> 
+                <tr>
+                <th>ID</th>
+                <th>Regiões</th>
+                <th colspan="2"> </th>
+                </tr>
+            </thead>
 
             <?php
             foreach($branches as $branch):

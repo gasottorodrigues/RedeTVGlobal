@@ -13,8 +13,8 @@ div.main-container{
 /* CABECALHO DA PAGINA */
 
 header.main-header{
-    background:#00BFFF;
-    color:white;
+    background:white;
+    border-bottom:2px solid #0fcadc;
     margin:0 0 !important;
 }
 
@@ -25,12 +25,11 @@ header.main-header{
 header.main-header nav a{
     font-size:1rem;
     text-transform: uppercase;
-    color:white;
+    color:#000087;
 }
 
 header.main-header nav a:hover{
-    color:#0000CD;
-    text-decoration: underline;
+    color:#000087;
     font-weight: bold;
 }
 
@@ -275,4 +274,32 @@ div.other-news div div h1{
 
 div.other-news div div h1 a{
     color:#666;
+}
+
+div.ad-container h1{
+    color:#aaa;
+    font-size:1.5rem;
+    display:block;
+    width:100%;
+    padding:5px;
+    border-bottom:1px solid #aaa;
+}
+
+div.ad-container div.ad-thumb{
+    width:100%;
+    height:120px;
+
+    background-attachment: local;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+div.ad-container div.ad-link{
+    text-align: center;
+    font-size:0.8rem;
+    margin-bottom:5px;
+}
+div.ad-container div.ad-link a{
+    color:#aaa;
 }

@@ -20,7 +20,7 @@
         <header class="main-header w-100 row" style="margin:0 0;">
                 <nav class="navbar navbar-expand-lg  col-12 col-lg-10">
                         <a class="navbar-brand" href="#">
-                            <img src="<?=url("shared/logo-3.png")?>" alt="Global TV">
+                            <img src="<?=url("shared/logo-2.png")?>" alt="Global TV">
                         </a>
                         <button class="navbar-toggle navbar-toggler  navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon d-flex justify-content-center align-items-center">
@@ -31,7 +31,8 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
                                 <li class="nav-item disabled region">
-                                    <span class="nav-link" style="color:#DB640F;text-transform:uppercase;">Administrador</span>
+                                    <span class="nav-link" style="color:#0fcadc;
+    text-transform: uppercase;">Administrador</span>
                                 </li>
                 
                                 <li class="nav-item active">

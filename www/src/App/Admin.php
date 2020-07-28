@@ -409,6 +409,20 @@ class Admin
     }
 
     //Controladores de ação com lives
+    public function viewLives($data){
+         if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+         }
+
+         $lives = (new Live)->find()->fetch(true);
+
+         echo $this->view->render("lives.php",[
+            "title" => "Lives | ". SITE,
+            "lives" => $lives
+         ]);
+
+    }
+
     public function newLive($data)
     {
         if(!$this->isLogged()){
@@ -439,12 +453,24 @@ class Admin
                     die();
                 }else{
                     $url = $upload->upload($file,pathinfo($file["name"], PATHINFO_FILENAME),1920);
-        
                 }
         }
            
         $live = new Live;
         $live->add($url, $data["title"], $data["branch"], $data["date"]);
+
+        header("Location:". url("admin/lives"));
+	}
+
+    public function removeLive($data){
+         if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+        
+        $live = new Live;
+        $live->remove($data["id_lives"]);
+
+        header("Location:". url("/admin/lives"));
 	}
 
 }

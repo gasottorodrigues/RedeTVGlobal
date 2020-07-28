@@ -3,12 +3,14 @@
 
     if($users):
         ?>
-        <table  class="table table-striped">  
-            <tr>
-               <th>Apelido</th>
-               <th>E-mail</th>
-               <th colspan="2"> </th>
-            </tr>
+        <table  class="table table-striped"> 
+            <thead>
+                <tr>
+                <th>Apelido</th>
+                <th>E-mail</th>
+                <th scope="col" colspan="2">Ações</th>
+                </tr>
+            </thead>
 
             <?php
             foreach($users as $user):

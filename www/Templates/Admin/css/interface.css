@@ -13,8 +13,9 @@ div.main-container{
 /* CABECALHO DA PAGINA */
 
 header.main-header{
-    background:#2d5987;
-    color:white;
+    background:white;
+    color:#000087;
+    border-bottom:#0fcadc;
     margin:0 0 !important;
 }
 
@@ -25,7 +26,7 @@ header.main-header{
 header.main-header nav a{
     font-size:1rem;
     text-transform: uppercase;
-    color:white;
+    color:#000087;
 }
 
 header.main-header nav a:hover{
@@ -98,7 +99,7 @@ header.main-header a.fa{
 .news-form h1{
     font-size:3rem;
     margin-bottom:40px;
-    color:#DB640F;
+    color:#0fcadc;
     text-transform: uppercase;
 }
 
@@ -184,4 +185,54 @@ table tr td a.fa-pencil-square-o{
 
 table tr td a.fa-pencil-square-o:hover{
     color:#b3782d;
+}
+
+div.login-form{
+    width:80%;
+    margin:50px auto;
+    padding:10px;
+    box-shadow:
+        5px 5px 6px #0001,
+        -5px -5px 6px #00000010;
+    ;
+}
+
+div.login-form h1{
+    color:#000087;
+    text-align:center;
+    font-size:3rem;
+}
+div.login-form form{
+    width:70%;
+    min-height:60vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    margin:20px auto;
+    text-align:center;
+}
+div.login-form form .form-group{
+    width:100%;
+    margin:10px 0;
+}
+
+div.login-form form .form-group input{
+    font-size:2rem;
+    padding:10px;
+    border:1px solid #ddd;
+    border-radius:5px;
+    outline:none;
+}
+
+div.login-form form .form-group button{
+    width:100%;
+    font-size:2rem;
+    padding:10px;
+    border:1px solid #ddd;
+    border-radius:5px;
+}
+
+div.login-form form .form-group input::placeholder{
+    color:#0fcadcaa;
 }

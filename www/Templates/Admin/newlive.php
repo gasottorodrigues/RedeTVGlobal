@@ -7,7 +7,7 @@
 	<h1> Upload de uma live</h1>
 	<form action="<?=url("admin/lives/nova")?>" method="post" enctype="multipart/form-data">
 		<div class="row m-0 text-center">
-			<input type="text" name="title" class="col-12 title" placeholder="Título">
+			<input type="text" name="title" class="col-12 title" placeholder="TÃ­tulo">
 		</div>
 		<div class="row mx-0 my-3">
 			<div class="col-lg-3 col-12">
@@ -25,7 +25,7 @@
 						endforeach;
 					else:
 				?>
-					<option value="0">Sem opções</option>
+					<option value="0">Sem opÃ§Ãµes</option>
 				<?php endif; ?>
 			</select>
 			</div>

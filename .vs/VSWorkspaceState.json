@@ -2,9 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\www",
-    "\\www\\vendor\\league",
-    "\\www\\vendor\\league\\plates\\src\\RenderTemplate"
+    "\\www\\src",
+    "\\www\\src\\Models",
+    "\\www\\uploads",
+    "\\www\\uploads\\lives",
+    "\\www\\uploads\\lives\\2020",
+    "\\www\\uploads\\lives\\2020\\07",
+    "\\www\\vendor\\coffeecode",
+    "\\www\\vendor\\coffeecode\\datalayer",
+    "\\www\\vendor\\coffeecode\\datalayer\\src"
   ],
-  "SelectedNode": "\\www\\vendor",
+  "SelectedNode": "\\www\\uploads\\lives\\2020\\07",
   "PreviewInSolutionExplorer": false
 }

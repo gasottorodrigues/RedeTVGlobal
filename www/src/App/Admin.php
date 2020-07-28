@@ -8,6 +8,7 @@ use Source\Models\Category;
 use Source\Models\Branch;
 use Source\Models\User;
 use Source\Models\News;
+use Source\Models\Live;
 
 class Admin
 {
@@ -421,6 +422,30 @@ class Admin
             "branches" => $branches
         ]);
     }
+
+    public function saveLive($data){
+        $upload = new \CoffeeCode\Uploader\Media("uploads","lives");
+        $files = $_FILES;
+
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+        if(!empty($files["live"])){
+                $file = $files["live"];
+        
+                if(empty($file["type"]) || !in_array($file["type"],$upload::isAllowed())){
+                    echo "Sua mídia é invalida. <br><a href='".url("admin/lives/nova")."'>Voltar</a>"; 
+                    die();
+                }else{
+                    $url = $upload->upload($file,pathinfo($file["name"], PATHINFO_FILENAME),1920);
+        
+                }
+        }
+           
+        $live = new Live;
+        $live->add($url, $data["title"], $data["branch"], $data["date"]);
+	}
 
 }
 ?>

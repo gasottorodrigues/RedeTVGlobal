@@ -1,5 +1,6 @@
 <?php 
 	$v->layout("_main.php"); 
+	date_default_timezone_set("America/Sao_Paulo");
 ?>
 
 <div class="p-5 text-center news-form">
@@ -10,23 +11,28 @@
 		</div>
 		<div class="row mx-0 my-3">
 			<div class="col-lg-3 col-12">
-			<label for="url" class="file-label form-control">Selecione a live</label>
+			<label for="live" class="file-label form-control">Selecione a live</label>
 			<input type="file" name="live" class="d-none" id="live"/>
+			</div>
+			<div class="col-lg-3 col-12">
+			<select name="branch" class="form-control" id="branch">
+				<?php
+					if($branches):
+						foreach($branches as $branch):
+				?>
+						<option value="<?=$branch->branch_id;?>"><?=$branch->name;?></option>
+				<?php
+						endforeach;
+					else:
+				?>
+					<option value="0">Sem opções</option>
+				<?php endif; ?>
+			</select>
+			</div>
+			<div class="col-lg-3 col-12">
+                <input type="date" name="date" class="form-control" value="<?=date("Y-m-d")?>">
+            </div>
 		</div>
-		<div class="col-lg-3 col-12">
-        <select name="branch" class="form-control" id="branch">
-			<?php
-				if($branches):
-					foreach($branches as $branch):
-			?>
-					<option value="<?=$branch->branch_id;?>"><?=$branch->name;?></option>
-			<?php
-					endforeach;
-				else:
-			?>
-				<option value="0">Sem opções</option>
-			<?php endif; ?>
-		</select>
-		</div>
+		<button type="submit" class="w-50 submit">Salvar Live</button>
 	</form>
 </div>

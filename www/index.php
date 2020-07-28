@@ -53,7 +53,7 @@
 
     $router->get("/lives","Admin:viewLives");
     $router->get("/lives/nova","Admin:newLive");
-    $router->get("/lives/nova","Admin:saveLive");
+    $router->post("/lives/nova","Admin:saveLive");
     $router->get("/lives/delete/{live_id}","Admin:removeLive"); 
 
     $router->group("ooops");

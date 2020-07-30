@@ -7,6 +7,7 @@ use Source\Models\Category;
 use Source\Models\Branch;
 use Source\Models\News;
 use Source\Models\Live;
+use Source\Models\Ad;
 
 class Web
 {
@@ -19,19 +20,23 @@ class Web
     public function home($data){
         $cats = (new Category)->find()->fetch(true);
         $branches = (new Branch)->find()->fetch(true);
+        $ads = (new Ad)->find()->fetch(true);
 
         $rdpcats = (new Category)->find()->fetch(true);
         $rdpbranches = (new Branch)->find()->fetch(true);
 
         $recent_news = (new News)->find()->limit(5)->order("updated_at DESC")->fetch(true);
+        $news = (new News)->find()->limit(10)->order("updated_at DESC")->fetch(true);
 
         echo $this->view->render("home.php",[
             "title" => "Home | ". SITE,
             "cats" => $cats,
             "branches" => $branches,
-            "news" => $recent_news,
+            "carr_news" => $recent_news,
+            "news" => $news,
             "rdpcats" => $rdpcats,
-            "rdpbranches" => $rdpbranches
+            "rdpbranches" => $rdpbranches,
+            "ads" => $ads
         ]);
     }
 
@@ -40,26 +45,32 @@ class Web
         $branches = (new Branch)->find()->fetch(true);
         $rdpcats = (new Category)->find()->fetch(true);
         $rdpbranches = (new Branch)->find()->fetch(true);
+        $ads = (new Ad)->find()->fetch(true);
 
         $branch_name = (new Branch)->findById($data["branch"])->name;
 
         $recent_news = (new News)->find("branch=:b","b={$data["branch"]}")->limit(5)->order("updated_at DESC")->fetch(true);
+        $news = (new News)->find("branch=:b","b={$data["branch"]}")->limit(10)->order("updated_at DESC")->fetch(true);
+
 
         echo $this->view->render("home.php",[
             "title" => "Home | ". SITE,
             "cats" => $cats,
             "branches" => $branches,
-            "news" => $recent_news,
+            "carr_news" => $recent_news,
+            "news" => $news,
             "actual_branch" => $branch_name,
             "branch_id" => $data["branch"],
             "rdpcats" => $rdpcats,
-            "rdpbranches" => $rdpbranches
+            "rdpbranches" => $rdpbranches,
+            "ads" => $ads
         ]);
     }
 
     public function categoryNews($data){
         $cats = (new Category)->find()->fetch(true);
         $branches = (new Branch)->find()->fetch(true);
+        $ads = (new Ad)->find()->fetch(true);
 
         $branch_name = (new Branch)->findById($data["branch"])->name;
         $category_name = (new Category)->findById($data["category"])->description;
@@ -76,7 +87,8 @@ class Web
             "cat_id" => $data["category"],
             "actual_category" => $category_name,
             "rdpcats" => $cats,
-            "rdpbranches" => $branches
+            "rdpbranches" => $branches,
+            "ads" => $ads
         ]);
 
     }
@@ -86,6 +98,7 @@ class Web
         $req = $news->findById($data["news_id"]);
         $cat = (new Category)->findById($req->category);
         $bnc = (new Branch)->findById($req->branch);
+        $ads = (new Ad)->find()->limit(3)->fetch(true);
 
         $cats = (new Category)->find()->fetch(true);
         $branches = (new Branch)->find()->fetch(true);
@@ -105,6 +118,7 @@ class Web
             "cat_id" => $data["category"],
             "branch" => $bnc->name,
             "others" => $others,
+            "ads" => $ads
         ]);
     }
 

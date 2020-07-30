@@ -57,6 +57,9 @@
                                                 <a href="<?=url("admin/usuarios/novo")?>" class="nav-link">Usuário</a>
                                             </li>
                                             <li class="nav-item">
+                                                <a href="<?=url("admin/anuncios/novo")?>" class="nav-link">Anúncio</a>
+                                            </li>
+                                            <li class="nav-item">
                                                 <a href="<?=url("admin/lives/nova")?>" class="nav-link">Live</a>
                                             </li>
                                         </ul>
@@ -79,6 +82,9 @@
                                             </li>                                        
                                             <li class="nav-item">
                                                 <a href="<?=url("admin/usuarios")?>" class="nav-link">Usuários</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="<?=url("admin/anuncios")?>" class="nav-link">Anúncios</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a href="<?=url("admin/lives")?>" class="nav-link">Lives</a>

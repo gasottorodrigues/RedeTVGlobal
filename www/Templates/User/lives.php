@@ -9,7 +9,6 @@
         endforeach;
     else:
 ?>
-    Sem lives :(
 <?php
     endif;
 ?>

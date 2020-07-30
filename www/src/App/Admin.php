@@ -9,6 +9,7 @@ use Source\Models\Branch;
 use Source\Models\User;
 use Source\Models\News;
 use Source\Models\Live;
+use Source\Models\Ad;
 
 class Admin
 {
@@ -470,8 +471,71 @@ class Admin
         $live = new Live;
         $live->remove($data["id_lives"]);
 
-        header("Location:". url("/admin/lives"));
-	}
+        header("Location:". url("admin/anuncios"));
+    }
+
+    public function viewAds($data){
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+        $ads = (new Ad)->find()->fetch(true);
+
+        echo $this->view->render("ads.php",[
+            "title" => "Nova notícia | ". SITE,
+            "ads" => $ads
+        ]);
+    }
+
+    public function newAd($data)
+    {
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+
+        echo $this->view->render("newad.php",[
+            "title" => "Nova notícia | ". SITE
+        ]);
+    }
+    
+    public function saveAd($data){
+        $upload = new \CoffeeCode\Uploader\Image("uploads","ads");
+        $files = $_FILES;
+        
+        if(!empty($files["thumb"])){
+            $file = $files["thumb"];
+    
+            if(empty($file["type"]) || !in_array($file["type"],$upload::isAllowed())){
+                echo "Sem imagem ou imagem inválida para a thumb! <br><a href='".url("admin/noticias/nova")."'>Voltar</a>"; 
+                die();
+            }else{
+                $url = $upload->upload($file,pathinfo($file["name"], PATHINFO_FILENAME),1920);
+            }
+        }
+        
+        $ad = new Ad;
+        $ad->add($data["description"],$url,$data["link"]);
+                
+        
+        if($ad->fail()){
+            $ad->fail()->getMessage();
+        }
+        header("Location:". url("admin/anuncios"));
+    }
+
+    public function removeAd($data){
+        echo "caralhooo";
+
+        if(!$this->isLogged()){
+           header("Location:".url("admin/login"));
+       }
+       
+       $live = new Ad;
+       $live->remove($data["ad_id"]);
+
+       header("Location:". url("admin/anuncios"));
+   }
 
 }
 ?>

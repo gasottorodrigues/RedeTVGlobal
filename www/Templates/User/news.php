@@ -39,4 +39,17 @@
     </div>
     <?php endif; ?>
 
+    <?php if(isset($ads)): ?>
+    <div class="ad-container">
+        <div class="row">
+            <?php foreach($ads as $ad): ?>
+            <div class="col-12 col-lg-4">
+                <img src="<?=url($ad->thumb)?>" class="img-fluid">
+                <h1><a href="<?=$ad->link?>" target="_blank"><?=$ad->description?></a></h1>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php endif; ?>
+
 </div>

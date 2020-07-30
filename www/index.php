@@ -57,6 +57,11 @@
     $router->post("/lives/nova","Admin:saveLive");
     $router->get("/lives/delete/{id_lives}","Admin:removeLive"); 
 
+    $router->get("/anuncios","Admin:viewAds"); 
+    $router->get("/anuncios/novo","Admin:newAd"); 
+    $router->post("/anuncios/novo","Admin:saveAd"); 
+    $router->get("/anuncios/delete/{ad_id}","Admin:removeAd"); 
+
     $router->group("ooops");
     $router->get("/{errcode}","Web:error");
 

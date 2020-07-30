@@ -8,14 +8,20 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
 <?php $v->end(); ?>
 
+<?php if(isset($carr_news)): ?>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+        <?php
+            $cont = 1;
+            foreach($carr_news as $n):
+        ?>
+            <li data-target="#carouselExampleIndicators" data-slide-to="<?=$cont?>"></li>
+
+        <?php 
+            $cont++;
+            endforeach; 
+        ?>
     </ol>
     <div class="carousel-inner">
             <div class="carousel-item active">
@@ -23,8 +29,7 @@
                 </div>
             </div>
         <?php
-        if(isset($news)):
-            foreach($news as $n):
+            foreach($carr_news as $n):
         ?>
             <div class="carousel-item">
                 <div class="w-100 carousel-image" style="background-image:url(<?=url($n->thumb_url)?>)" alt="First slide">
@@ -56,7 +61,7 @@
         <h1>Notícias Recentes <i class="fa fa-newspaper-o" aria-hidden="true"></i></h1>
     </header>
 
-    <div class="w-100 d-flex justify-content-center">
+    <div class="w-100 d-flex justify-content-flex-start">
     
         <div class="p-2 w-75">
         <?php
@@ -75,17 +80,18 @@
         endif;
         ?>
         </div>
-
-        <div class="ad-container d-none d-lg-block w-25">
+        <?php
+            if(isset($ads)):
+        ?>
+        <div class="ad d-none d-lg-block w-25">
             <h1>Anúncios</h1>
             <?php
-            if(isset($news)):
-            foreach($news as $n): 
-        ?>
+            foreach($ads as $ad): 
+            ?>
             <div class="ad p-2">
-                <div class="ad-thumb" style="background-image:url(<?=url($n->thumb_url)?>)"></div>
+                <div class="ad-image" style="background-image:url(<?=url($ad->thumb)?>)"></div> 
                 <div class="ad-link">
-                    <a href="<?=url("regiao/{$n->branch}/categoria/{$n->category}/noticia/{$n->news_id}")?>"><?=$n->caption?></a></h1>
+                    <a href="<?=$ad->link?>" target="_blank"><?=$ad->description?></a></h1>
                 </div>
             </div>
         <?php 
@@ -93,8 +99,6 @@
         endif;
         ?>
         </div>
-
-        
     </div>
           
 

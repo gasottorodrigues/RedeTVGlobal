@@ -2,16 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\www",
-    "\\www\\src",
-    "\\www\\src\\Models",
-    "\\www\\uploads",
-    "\\www\\uploads\\lives",
+    "\\www\\Templates",
+    "\\www\\Templates\\User",
     "\\www\\uploads\\lives\\2020",
-    "\\www\\uploads\\lives\\2020\\07",
-    "\\www\\vendor\\coffeecode",
-    "\\www\\vendor\\coffeecode\\datalayer",
-    "\\www\\vendor\\coffeecode\\datalayer\\src"
+    "\\www\\uploads\\lives\\2020\\07"
   ],
-  "SelectedNode": "\\www\\uploads\\lives\\2020\\07",
+  "SelectedNode": "\\www\\Templates\\User\\lives.php",
   "PreviewInSolutionExplorer": false
 }

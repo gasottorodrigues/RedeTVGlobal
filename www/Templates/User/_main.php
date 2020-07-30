@@ -112,7 +112,7 @@
                 <img src="<?=url("shared/logo-1.png")?>" class="img-fluid w-50" >
                 <span>Todos os Direitos Reservados &copy; 2020</span>
             </div>
-            <div class="col-12 col-lg-3">
+            <div class="col-12 col-lg-4">
                 <header class="footer-header p-2">
                 TVs
                 </header>
@@ -124,7 +124,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-12 col-lg-3">
+            <div class="col-12 col-lg-4">
                 <header class="footer-header p-2">
                 Categorias
                 </header>
@@ -133,19 +133,6 @@
                         <?php foreach($cats as $c): ?>
                             <li><?=$c->description?></li>
                         <?php endforeach; ?>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-12 col-lg-3">
-                <header class="footer-header p-2">
-                    Sobre
-                </header>
-                <div class="footer-list ">
-                    <ul>
-                        <li><a href="#">Sobre Nós</a></li>
-                        <li><a href="#">Propaganda</a></li>
-                        <li><a href="#">Marca Comercial</a></li>
-                        <li><a href="#">Licença</a></li>
                     </ul>
                 </div>
             </div>

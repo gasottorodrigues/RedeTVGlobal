@@ -315,3 +315,52 @@ div.ad-container div h1 a{
     text-align:center;
     display:block;
 }
+
+div.converse-container{
+    width:80%;
+    margin:10px auto;
+    display:grid;
+
+}
+
+div.converse-container h1{
+    color:#0fcadc;
+    font-size:4rem;
+}
+
+div.converse-container h2{
+    font-size:2rem;
+    margin-bottom:30px;
+}
+
+div.converse-container .tv-contact{
+    border:1px solid #0fcadc;
+    margin:10px;
+    min-height:30vh;
+    position: relative;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.converse-container .tv-contact h1{
+    display:block;
+    background:#2d5987;
+    color:white;
+    padding:5px 10px;
+    font-size:1.5rem;
+
+    position: absolute;
+    top:-15px;
+    left:10px;
+}
+
+div.converse-container .tv-contact .link i{
+    font-size:6rem;
+    color:#25D366;
+}
+
+div.converse-container .tv-contact .link a{
+    color:#25D366;
+}

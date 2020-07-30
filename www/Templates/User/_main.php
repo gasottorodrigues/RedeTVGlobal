@@ -87,7 +87,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="<?=url("")?>" class="nav-link">Converse com a gente</a>
+                                    <a href="<?=url("converse")?>" class="nav-link">Converse com a gente</a>
                                 </li>
                             </ul>
                         </div>

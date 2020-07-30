@@ -10,6 +10,7 @@ use Source\Models\User;
 use Source\Models\News;
 use Source\Models\Live;
 use Source\Models\Ad;
+use Source\Models\Cv;
 
 class Admin
 {
@@ -474,6 +475,7 @@ class Admin
         header("Location:". url("admin/anuncios"));
     }
 
+    //Controlador Ads
     public function viewAds($data){
         if(!$this->isLogged()){
             header("Location:".url("admin/login"));
@@ -537,5 +539,57 @@ class Admin
        header("Location:". url("admin/anuncios"));
    }
 
+    //Controlador de ação do CVs
+    public function viewCvs($data){
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+        $cvs = (new Cv)->find()->fetch(true);
+
+        echo $this->view->render("cvs.php",[
+            "title" => "Conversas | ". SITE,
+            "cvs" => $cvs
+        ]);
+    }
+
+    public function newCv($data){
+     if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+        $branches = (new Branch)->find()->fetch(true);
+
+        echo $this->view->render("newcv.php",[
+            "title" => "Novo link para conversar | ". SITE,
+            "branches" => $branches
+        ]);
+	}
+
+    public function saveCv($data){
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+        $cv = new Cv;
+        $cv->add($data["cv_link"], $data["branch"]);
+
+        if($cv->fail()){
+            $cv->fail()->getMessage();
+        }
+
+        header("Location:". url("admin/converses"));
+	}
+
+    public function removeCv($data){
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+       $cv = new Cv;
+       $cv->remove($data["cv_id"]);
+
+       header("Location:". url("admin/converses"));
+	}
 }
 ?>

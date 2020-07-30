@@ -13,6 +13,7 @@
     $router->get("/regiao/{branch}/categoria/{category}","Web:categoryNews");
     $router->get("/regiao/{branch}/categoria/{category}/noticia/{news_id}","Web:newsDetails");
     $router->get("/lives","Web:shareLives");
+    $router->get("/converse","Web:converseWeb");
 
 
     $router->group("admin");
@@ -61,6 +62,11 @@
     $router->get("/anuncios/novo","Admin:newAd"); 
     $router->post("/anuncios/novo","Admin:saveAd"); 
     $router->get("/anuncios/delete/{ad_id}","Admin:removeAd"); 
+
+    $router->get("/converses","Admin:viewCvs"); 
+    $router->get("/converses/novo","Admin:newCv"); 
+    $router->post("/converses/novo","Admin:saveCv"); 
+    $router->get("/converses/delete/{cv_id}","Admin:removeCv"); 
 
     $router->group("ooops");
     $router->get("/{errcode}","Web:error");

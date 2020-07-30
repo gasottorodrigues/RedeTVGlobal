@@ -8,6 +8,7 @@ use Source\Models\Branch;
 use Source\Models\News;
 use Source\Models\Live;
 use Source\Models\Ad;
+use Source\Models\Cv;
 
 class Web
 {
@@ -130,6 +131,20 @@ class Web
         echo $this->view->render("lives.php",[
             "title" => "Lives | ". SITE,
             "lives" => $lives,
+            "cats" => $cats,
+            "branches" => $branches
+        ]);
+	}
+
+    //Controlador Converse com a gente
+    public function converseWeb($data){
+        $cats = (new Category)->find()->fetch(true);
+        $branches = (new Branch)->find()->fetch(true);
+        $cvs = (new Cv)->find()->fetch(true);
+
+         echo $this->view->render("converse.php",[
+            "title" => "Converse com a gente | ". SITE,
+            "cvs" => $cvs,
             "cats" => $cats,
             "branches" => $branches
         ]);

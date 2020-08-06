@@ -11,6 +11,7 @@ use Source\Models\News;
 use Source\Models\Live;
 use Source\Models\Ad;
 use Source\Models\Cv;
+use Source\Models\Aovivo;
 
 class Admin
 {
@@ -35,7 +36,9 @@ class Admin
         if($user->login($email,$passwd)){
             $_SESSION["globaltv_user"] = 1;
             header("Location:". url("admin/"));
-        }
+        }else{
+            header("Location:". url("admin/login")); 
+		}
     }
 
     public function logout($data){
@@ -417,10 +420,12 @@ class Admin
          }
 
          $lives = (new Live)->find()->fetch(true);
+         $lives_on = (new Aovivo)->find()->fetch(true);
 
          echo $this->view->render("lives.php",[
             "title" => "Lives | ". SITE,
-            "lives" => $lives
+            "lives" => $lives,
+            "lives_on" => $lives_on
          ]);
 
     }
@@ -459,7 +464,7 @@ class Admin
         }
            
         $live = new Live;
-        $live->add($url, $data["title"], $data["branch"], $data["date"]);
+        $live->add($url, $data["title"], $data["branch"], $data["date"], $data["status"]);
 
         header("Location:". url("admin/lives"));
 	}
@@ -472,8 +477,48 @@ class Admin
         $live = new Live;
         $live->remove($data["id_lives"]);
 
-        header("Location:". url("admin/anuncios"));
+        header("Location:". url("admin/lives"));
     }
+
+    //Controlador de Lives ao vivo
+    public function newOnlive($data){
+     if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+        $branches = (new Branch)->find()->fetch(true);
+
+        echo $this->view->render("newonlive.php",[
+            "title" => "Link para lives AO VIVO | ". SITE,
+            "branches" => $branches
+        ]);
+	}
+
+    public function saveOnlive($data){
+        if(!$this->isLogged()){
+            header("Location:".url("admin/login"));
+        }
+
+        $aovivo = new Aovivo;
+        $aovivo->add($data["on_link"], $data["branch"], $data["status"], $data["titulo"]);
+
+        if($aovivo->fail()){
+            $aovivo->fail()->getMessage();
+        }
+
+        header("Location:". url("admin/lives"));
+	}
+
+    public function removeOnlive($data){
+        if(!$this->isLogged()){
+           header("Location:".url("admin/login"));
+       }
+       
+       $aovivo = new Aovivo;
+       $aovivo->remove($data["aovivo_id"]);
+
+       header("Location:". url("admin/lives"));
+   }
 
     //Controlador Ads
     public function viewAds($data){

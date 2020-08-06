@@ -63,6 +63,9 @@
                                                 <a href="<?=url("admin/lives/nova")?>" class="nav-link">Live</a>
                                             </li>
                                             <li class="nav-item">
+                                                <a href="<?=url("admin/onlives/nova")?>" class="nav-link">Live - Ao Vivo</a>
+                                            </li>
+                                            <li class="nav-item">
                                                 <a href="<?=url("admin/converses/novo")?>" class="nav-link">Converse</a>
                                             </li>
                                         </ul>

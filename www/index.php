@@ -58,6 +58,10 @@
     $router->post("/lives/nova","Admin:saveLive");
     $router->get("/lives/delete/{id_lives}","Admin:removeLive"); 
 
+    $router->get("/onlives/nova","Admin:newOnlive");
+    $router->post("/onlives/nova","Admin:saveOnlive");
+    $router->get("/onlives/delete/{aovivo_id}","Admin:removeOnlive"); 
+
     $router->get("/anuncios","Admin:viewAds"); 
     $router->get("/anuncios/novo","Admin:newAd"); 
     $router->post("/anuncios/novo","Admin:saveAd"); 

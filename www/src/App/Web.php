@@ -9,6 +9,7 @@ use Source\Models\News;
 use Source\Models\Live;
 use Source\Models\Ad;
 use Source\Models\Cv;
+use Source\Models\Aovivo;
 
 class Web
 {
@@ -123,14 +124,17 @@ class Web
         ]);
     }
 
+    //Lives
     public function shareLives($data){
         $lives = (new Live)->find()->fetch(true);
+        $on_lives = (new Aovivo)->find()->fetch(true);
         $cats = (new Category)->find()->fetch(true);
         $branches = (new Branch)->find()->fetch(true);
 
         echo $this->view->render("lives.php",[
             "title" => "Lives | ". SITE,
             "lives" => $lives,
+            "on_lives" => $on_lives,
             "cats" => $cats,
             "branches" => $branches
         ]);

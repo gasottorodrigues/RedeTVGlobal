@@ -2,11 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\www",
+    "\\www\\src",
     "\\www\\Templates",
-    "\\www\\Templates\\User",
-    "\\www\\uploads\\lives\\2020",
-    "\\www\\uploads\\lives\\2020\\07"
+    "\\www\\Templates\\User"
   ],
-  "SelectedNode": "\\www\\Templates\\User\\lives.php",
+  "SelectedNode": "\\www\\Templates\\User\\_main.php",
   "PreviewInSolutionExplorer": false
 }

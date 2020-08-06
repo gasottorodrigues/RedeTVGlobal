@@ -33,6 +33,7 @@
                 <input type="date" name="date" class="form-control" value="<?=date("Y-m-d")?>">
             </div>
 		</div>
+		<input type="hidden" name="status" value="Gravada"/>
 		<button type="submit" class="w-50 submit">Salvar Live</button>
 	</form>
 </div>

@@ -3,37 +3,47 @@
 
 
 ?>
-    <h1>Lives Gravadas</h1>
+<div class="lives-container">
+    <h1>Lives Da GlobalTV</h1>
+    <div class="tvs-container">
 <?php
         if($branches):
             foreach($branches as $branch):
 ?>
-                <h1><?=$branch->name;?></h1>
+                <div class="live-tv">
+                <h2><i class="fa fa-map-marker"></i> <?=$branch->name;?></h2>
 <?php
                 if($lives || $on_lives):
-                    foreach($lives as $live):
-                        if($branch->branch_id==$live->id_tv && $live->status=="Gravada"):
+                    if($on_lives):
+                        foreach($on_lives as $on_live):
+                            if($branch->branch_id==$on_live->tv_id && $on_live->status=="Ao vivo"):
 ?>
-                        <a href="<?=$live->url;?>"><?=$live->titulo;?></a>
-                        <p><span style="font-weight:bold;">Data:</span> <?=$live->data_post;?></p>                
-<?php                   
-                        endif;
-                    endforeach;
-                    
-                    foreach($on_lives as $on_live):
-                        if($branch->branch_id==$on_live->tv_id && $on_live->status=="Ao vivo"):
-?>
-                        <a href="<?=$on_live->link;?>"><?=$on_live->titulo;?></a>
-                        <p style="color: red;" class="aovivo">AO VIVO</p>   
+                            <div class="lives-on">
+                                <a href="<?=$on_live->link;?>" target="_blank"><?=$on_live->titulo;?> <span><i class="fa fa-circle"></i> AO VIVO<span></a>
+                                
+                            </div>
 <?php       
-                        endif;
-                    endforeach;
+                            endif;
+                        endforeach;
+                    endif;
+                    if($lives):
+                        foreach($lives as $live):
+                            if($branch->branch_id==$live->id_tv && $live->status=="Gravada"):
+    ?>
+                            <div class="lives-off">
+                                <a href="<?=$live->url;?>" target="_blank"><?=$live->titulo;?><span><?=$live->data_post;?></span></a>
+                            </div>               
+    <?php                   
+                            endif;
+                        endforeach;
+                    endif;
                 else:
                     ?>
                         <h4>Sem lives cadastradas!</h4>
                     <?php
-                endif;
-
+                endif; ?>
+                </div>
+<?php
             endforeach;//branches
         else:
 ?>
@@ -41,3 +51,5 @@
 <?php    
         endif;  
 ?>
+    </div>
+</div>

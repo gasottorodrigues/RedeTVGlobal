@@ -364,3 +364,98 @@ div.converse-container .tv-contact .link i{
 div.converse-container .tv-contact .link a{
     color:#25D366;
 }
+
+div.lives-container{
+    margin-top:20px;
+    padding:30px;
+}
+div.lives-container h1{
+    text-align:center;
+    color:#0fcadc;
+    font-size:4rem;
+}
+
+div.tvs-container{
+    margin:auto;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+div.tvs-container .live-tv{
+    width:45%;
+    margin:13px;
+    position:relative;
+    min-height: 20vh;
+    box-shadow:3px 3px 15px rgba(0,0,0,0.1);
+
+    padding:30px 15px;
+}
+
+div.tvs-container .live-tv h2{
+    display:block;
+    background:#2d5987;
+    color:white;
+    padding:5px 10px;
+    font-size:1.5rem;
+
+    position: absolute;
+    top:-15px;
+    left:10px;
+}
+
+div.tvs-container .live-tv div{
+    width:90%;
+    margin:10px;
+    border-bottom:1px solid #ddd;
+}
+
+
+div.tvs-container .live-tv div a{
+    width:100%;
+    display: block;
+    padding:3px 0px;
+    color:#333;
+    font-size:1.2rem;
+    position: relative;
+
+    transition:all 0.2s;
+}
+
+div.tvs-container .live-tv div a span{
+    position: absolute;
+    right:0;
+    
+}
+
+div.tvs-container .live-tv .lives-on a span{
+    background:#ed1a1a;
+    padding:0px 5px;
+    color:white;
+    border-radius:5px;
+    font-size:1rem;
+}
+
+div.tvs-container .live-tv .lives-off a span{
+    padding:0px 5px;
+    color:#aaa;
+    border-radius:5px;
+    font-size:1rem;
+}
+
+
+div.tvs-container .live-tv .lives-on a:hover{
+    box-shadow:inset 0px -2px 0px #ed1a1a;
+    color:#ed1a1a;
+    text-decoration: none;
+}
+
+div.tvs-container .live-tv .lives-off a:hover{
+    box-shadow:inset 0px -2px 0px #2d5987;
+    color:#2d5987;
+    text-decoration: none;
+}
+
+
+
+
+
